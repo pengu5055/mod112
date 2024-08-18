@@ -37,14 +37,14 @@ class YuleWalker:
         self.R = solve_toeplitz((self.ac_vec[:self.order], self.ac_vec[:self.order]), self.ac_vec[1:self.order+1])
         self.sigma2 = self.ac_vec[0] - np.dot(self.R, self.ac_vec[1:self.order+1])
 
-    def _freq(self):
+    def _freq(self, N=512):
         """
         Compute the frequency response of the AR model.
 
         np.r_ translates slice objects to concatenation along the first axis, 
         to quickly build up arrays.
         """
-        self.w, self.h = freqz(np.sqrt(self.sigma2), np.r_[1, -self.R])
+        self.w, self.h = freqz(np.sqrt(self.sigma2), np.r_[1, -self.R], worN=N)
     
     def psd(self):
         """
