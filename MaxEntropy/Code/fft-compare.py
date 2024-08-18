@@ -56,25 +56,28 @@ psd3 = psd3 / np.max(psd3)
 # fft_data3 = fft_data3 * np.max(psd3)
 
 # Plot the FFT, AR model PSD, the abs. diff. and the poles of the AR model
-fig, ax = plt.subplots(3, 3, figsize=(12, 8), layout="compressed", sharex="col")
+fig, ax = plt.subplots(3, 3, figsize=(12, 8), layout="compressed")
 
 ax[0, 0].plot(w1, psd1, color=colors[1], label=f"AR Model w/ {order1}th\nOrder Yule-Walker",
               lw=3, zorder=2)
 ax[0, 0].plot(np.linspace(0, np.pi, len(fft_data1), endpoint=False), fft_data1, ls="--",
                 color=colors[7], label="FFT of Signal", lw=2, zorder=3)
 ax[0, 0].legend(fontsize=8)
+ax[0, 0].set_ylabel("PSD")
 
 ax[0, 1].plot(w2, psd2, color=colors[2], label=f"AR Model w/ {order2}th\nOrder Yule-Walker",
                 lw=3, zorder=2)
 ax[0, 1].plot(np.linspace(0, np.pi, len(fft_data2), endpoint=False), fft_data2, ls="--",
                 color=colors[7], label="FFT of Signal", lw=2, zorder=3)
 ax[0, 1].legend(fontsize=8)
+ax[0, 1].set_ylabel("PSD")
 
 ax[0, 2].plot(w3, psd3, color=colors[4], label=f"AR Model w/ {order3}th\nOrder Yule-Walker",
                 lw=3, zorder=2)
 ax[0, 2].plot(np.linspace(0, np.pi, len(fft_data3), endpoint=False), fft_data3, ls="--",
                 color=colors[7], label="FFT of Signal", lw=2, zorder=3)
 ax[0, 2].legend(fontsize=8)
+ax[0, 2].set_ylabel("PSD")
 
 # Interpolate FFT to 512 points
 
@@ -89,6 +92,7 @@ ax[1, 0].plot(w1, diff1, color=colors[1], label=f"AR Model w/ {order1}th\nOrder 
 ax[1, 0].axhline(np.mean(diff1), color=colors[7], ls="--", lw=2, label="Mean")
 ax[1, 0].text(0.65, 0.05, f"Mean: ${np.mean(diff1):.2e}$", transform=ax[1, 0].transAxes, bbox=bbox, fontsize=8)
 ax[1, 0].set_ylabel("Absolute Difference")
+ax[1, 0].set_xlabel("Frequency [rad/sample]")
 ax[1, 0].set_yscale("log")
 
 ax[1, 1].plot(w2, diff2, color=colors[2], label=f"AR Model w/ {order2}th\nOrder Yule-Walker",
@@ -96,6 +100,7 @@ ax[1, 1].plot(w2, diff2, color=colors[2], label=f"AR Model w/ {order2}th\nOrder 
 ax[1, 1].axhline(np.mean(diff2), color=colors[7], ls="--", lw=2, label="Mean")
 ax[1, 1].text(0.65, 0.05, f"Mean: ${np.mean(diff2):.2e}$", transform=ax[1, 1].transAxes, bbox=bbox, fontsize=8)
 ax[1, 1].set_ylabel("Absolute Difference")
+ax[1, 1].set_xlabel("Frequency [rad/sample]")
 ax[1, 1].set_yscale("log")
 
 ax[1, 2].plot(w3, diff3, color=colors[4], label=f"AR Model w/ {order3}th\nOrder Yule-Walker",
@@ -103,10 +108,27 @@ ax[1, 2].plot(w3, diff3, color=colors[4], label=f"AR Model w/ {order3}th\nOrder 
 ax[1, 2].axhline(np.mean(diff3), color=colors[7], ls="--", lw=2, label="Mean")
 ax[1, 2].text(0.65, 0.05, f"Mean: ${np.mean(diff3):.2e}$", transform=ax[1, 2].transAxes, bbox=bbox, fontsize=8)
 ax[1, 2].set_ylabel("Absolute Difference")
+ax[1, 2].set_xlabel("Frequency [rad/sample]")
 ax[1, 2].set_yscale("log")
 
 # Plot the poles of the AR model
+ax[2, 0].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color='black', linestyle='--', linewidth=2)
+ax[2, 0].scatter(np.real(yw1.R), np.imag(yw1.R), color=colors[1], s=10, label=f"AR Model w/ {order1}th\nOrder Yule-Walker", zorder=2)
+ax[2, 0].set_xlim(-1.5, 1.5)
+ax[2, 0].set_xlabel("Real")
+ax[2, 0].set_ylabel("Imaginary")
 
+ax[2, 1].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color='black', linestyle='--', linewidth=2)
+ax[2, 1].scatter(np.real(yw2.R), np.imag(yw2.R), color=colors[2], s=10, label=f"AR Model w/ {order2}th\nOrder Yule-Walker", zorder=2)
+ax[2, 1].set_xlim(-1.5, 1.5)
+ax[2, 1].set_xlabel("Real")
+ax[2, 1].set_ylabel("Imaginary")
+
+ax[2, 2].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color='black', linestyle='--', linewidth=2)
+ax[2, 2].scatter(np.real(yw3.R), np.imag(yw3.R), color=colors[4], s=10, label=f"AR Model w/ {order3}th\nOrder Yule-Walker", zorder=2)
+ax[2, 2].set_xlim(-1.5, 1.5)
+ax[2, 2].set_xlabel("Real")
+ax[2, 2].set_ylabel("Imaginary")
 
 
 plt.savefig(f"./MaxEntropy/Images/fft-ar-model-compare.pdf", dpi=500)
