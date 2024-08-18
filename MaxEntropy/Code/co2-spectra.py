@@ -34,6 +34,8 @@ trend = square_fit(years, *popt)
 trend_sigma = np.sqrt(np.diag(pcov))
 detrended = sig - trend
 
+np.savez("./MaxEntropy/Data/co2-detrended.npz", years=years, sig=sig, trend=trend, detrended=detrended)
+
 # Plot intermediate results
 fig, ax = plt.subplots(1, 2, figsize=(12, 5), layout="compressed")
 
@@ -55,4 +57,30 @@ ax[1].set_xlabel("Year")
 ax[1].set_ylabel("CO2 Concentration [ppm/v]")
 
 plt.savefig(f"./MaxEntropy/Images/detrended-co2.pdf", dpi=500)
+plt.show()
+
+# Estimate the AR model (w/ 2pi rad/sample sample frequency)
+order = 15
+yw = YuleWalker(detrended, order)
+w, psd = yw.psd()
+
+# Get FFT of the signal
+fft_sig = np.fft.fft(detrended)
+fft_sig = fft_sig[:len(fft_sig)//2]
+psd_sig = np.abs(fft_sig)**2
+
+# Plot the PSD
+fig, ax = plt.subplots(1, 1, figsize=(8, 5))
+
+ax.plot(w, psd, color=colors[1], label=f"AR Model w/ {order}th Order Yule-Walker",
+        lw=3, zorder=2)
+ax.plot(np.linspace(0, np.pi, len(psd_sig), endpoint=False), psd_sig, color=colors[7],
+        label="FFT of Signal", lw=2, zorder=3)
+
+ax.set_title("Power Spectral Density")
+ax.set_xlabel("Frequency [rad/sample]")
+ax.set_ylabel("Power")
+ax.legend()
+
+plt.savefig(f"./MaxEntropy/Images/co2-spectra.pdf", dpi=500)
 plt.show()
