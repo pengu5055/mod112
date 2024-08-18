@@ -37,7 +37,7 @@ yw1 = YuleWalker(data1, order1)
 yw1._freq(N=256)
 w1, psd1 = yw1.psd()
 
-order2 = 10
+order2 = 20
 yw2 = YuleWalker(data2, order2)
 yw2._freq(N=256)
 w2, psd2 = yw2.psd()
@@ -79,8 +79,6 @@ ax[0, 2].plot(np.linspace(0, np.pi, len(fft_data3), endpoint=False), fft_data3, 
 ax[0, 2].legend(fontsize=8)
 ax[0, 2].set_ylabel("PSD")
 
-# Interpolate FFT to 512 points
-
 # Plot the absolute difference
 diff1 = np.abs(psd1 - fft_data1)
 diff2 = np.abs(psd2 - fft_data2)
@@ -112,25 +110,32 @@ ax[1, 2].set_xlabel("Frequency [rad/sample]")
 ax[1, 2].set_yscale("log")
 
 # Plot the poles of the AR model
+poly1 = np.r_[1, -yw1.R]
+poly2 = np.r_[1, -yw2.R]
+poly3 = np.r_[1, -yw3.R]
+roots1 = np.roots(poly1)
+roots2 = np.roots(poly2)
+roots3 = np.roots(poly3)
+
 ax[2, 0].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color='black', linestyle='--', linewidth=2)
-ax[2, 0].scatter(np.real(yw1.R), np.imag(yw1.R), color=colors[1], s=10, label=f"AR Model w/ {order1}th\nOrder Yule-Walker", zorder=2)
+ax[2, 0].scatter(np.real(roots1), np.imag(roots1), color=colors[1], s=10, label=f"AR Model w/ {order1}th\nOrder Yule-Walker", zorder=2)
 ax[2, 0].set_xlim(-1.5, 1.5)
 ax[2, 0].set_xlabel("Real")
 ax[2, 0].set_ylabel("Imaginary")
 
 ax[2, 1].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color='black', linestyle='--', linewidth=2)
-ax[2, 1].scatter(np.real(yw2.R), np.imag(yw2.R), color=colors[2], s=10, label=f"AR Model w/ {order2}th\nOrder Yule-Walker", zorder=2)
+ax[2, 1].scatter(np.real(roots2), np.imag(roots2), color=colors[2], s=10, label=f"AR Model w/ {order2}th\nOrder Yule-Walker", zorder=2)
 ax[2, 1].set_xlim(-1.5, 1.5)
 ax[2, 1].set_xlabel("Real")
 ax[2, 1].set_ylabel("Imaginary")
 
 ax[2, 2].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color='black', linestyle='--', linewidth=2)
-ax[2, 2].scatter(np.real(yw3.R), np.imag(yw3.R), color=colors[4], s=10, label=f"AR Model w/ {order3}th\nOrder Yule-Walker", zorder=2)
+ax[2, 2].scatter(np.real(roots3), np.imag(roots3), color=colors[4], s=10, label=f"AR Model w/ {order3}th\nOrder Yule-Walker", zorder=2)
 ax[2, 2].set_xlim(-1.5, 1.5)
 ax[2, 2].set_xlabel("Real")
 ax[2, 2].set_ylabel("Imaginary")
 
-
+plt.suptitle("Comparison of FFT and AR Model PSD")
 plt.savefig(f"./MaxEntropy/Images/fft-ar-model-compare.pdf", dpi=500)
 plt.show()
 
