@@ -57,8 +57,14 @@ for i, f in peaks.items():
     except ValueError:
         pass
 
+poly = {}
+roots = {}
+for f, yw in filters.items():
+    poly[f] = np.r_[1, -yw.R]
+    roots[f] = np.roots(poly[f])
+    
 cm = cmr.take_cmap_colors('cmr.tropical', len(spectra), cmap_range=(0.0, 0.85))
-fig, ax = plt.subplots(1, 2, figsize=(12, 5), layout='compressed')
+fig, ax = plt.subplots(1, 3, figsize=(14, 5), layout='compressed')
 x_axis = np.arange(len(spectra))
 
 ax[0].set_title("Relative Inverse Peak Heights")
@@ -79,6 +85,20 @@ ax[1].fill_between([-0.4, 0.4], 0, 1, color=cm[0], edgecolor="black", linewidth=
 ax[1].set_xticklabels(spectra.keys(), rotation=30)
 ax[1].set_yscale("log")
 ax[1].set_ylabel("Peak Widths")
+
+ax[2].set_title("Roots of Char. Polynomial")
+for i, a in enumerate(roots.items()):
+    f, r = a
+    ax[2].scatter(np.real(r), np.imag(r), color=cm[i], zorder=1, label=f"{f}th Order")
+ax[2].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)),
+           color='black', ls="--", zorder=2, lw=3, alpha=0.7)
+l = ax[2].legend(ncols=2, prop={'size': 8}, loc='upper right')
+f = l.get_frame()
+f.set_zorder(15)
+ax[2].set_xlim(-1.5, 1.5)
+ax[2].set_ylim(-1.5, 1.5)
+ax[2].set_xlabel("Real")
+ax[2].set_ylabel("Imaginary")
 
 plt.suptitle(f"Relative Peak Heights and Widths for AR Orders on {data_path.split('/')[-1]}")
 plt.savefig(f"./MaxEntropy/Images/peak-widths-{data_path.split('/')[-1]}.pdf", dpi=500)
