@@ -36,7 +36,7 @@ psd_sig = np.abs(fft_sig)**2
 # Plot the PSD
 ax[1].plot(w, psd, color=colors[1], label=f"AR Model w/ {order}th Order Yule-Walker",
            lw=3, zorder=2)
-ax[1].plot(np.linspace(0, np.pi, len(psd_sig)), psd_sig, color=colors[7],
+ax[1].plot(np.linspace(0, np.pi, len(psd_sig), endpoint=False), psd_sig, color=colors[7],
            label="FFT of Signal", lw=2, zorder=3)
 ax[1].set_title("Power Spectral Density")
 ax[1].set_xlabel("Frequency [rad/sample]")
