@@ -332,7 +332,7 @@ order, peak separation distance and spectra evaluation density. The results of t
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/test-spectra.pdf}
+    \includegraphics[width=0.8\textwidth]{../MaxEntropy/Images/test-spectra.pdf}
     \caption{The test spectra by FFT from the resolving power scan.}
     \label{fig:resolving-power-test}
 \end{figure}
@@ -351,8 +351,122 @@ are plotted in Figure \ref{fig:resolving-power-spectra}.
     \label{fig:resolving-power-spectra}
 \end{figure}
 
+\subsection{Forecasting Signals}
+As the instructions stated I used the AR model to forecast the various signals that were provided.. to varying 
+degrees of success. The simpler signals from the first subtask were forecasted relatively well, excluding the fact that 
+no matter what I did I could not get rid of an exponential decay of the overall amplitude of the forecasted signal. The results 
+for the forecasted signals from the first subtask are plotted in Figure \ref{fig:forecast-1}, \ref{fig:forecast-2} and
+\ref{fig:forecast-3}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/forecast-val2.dat.pdf}
+    \caption{The forecasted signal \texttt{val2.dat}.}
+    \label{fig:forecast-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/forecast-val3.dat.pdf}
+    \caption{The forecasted signal \texttt{val3.dat}.}
+    \label{fig:forecast-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/forecast-co2.dat.pdf}
+    \caption{The forecasted signal \texttt{co2.dat}.}
+    \label{fig:forecast-3}
+\end{figure}
+
+Since I was not able to remove the exponential decay trend I fitted an exponential decay and tried to find the order 
+of AR model that would provide the smallest decay rate. The upper-right plot contains the best case result for the 
+forecast of the signals. Where we can see that all have been predicted reasonably well. The further we go in time 
+the worse the forcasts become which can also be seen on the plots of the absolute distance from the control signal, 
+which is made from the second half of the data. Pattern and shape-wise the forecasted signals seem very similar to the 
+control signals. The only part of the forecast I find lacking (besides the decay) is for the \texttt{co2.dat} signal 
+where the forecasted signal lacks the overall larger oscillations that still seem to be present in the detrended signal. \\
+
+The forecasted signals from the second subtask were definitely more challenging and I'm less happy with the results I was 
+able to produce. The results are plotted in Figure \ref{fig:forecast-4}, \ref{fig:forecast-5} and \ref{fig:forecast-6}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf}
+    \caption{The forecasted signal \texttt{borza.dat}.}
+    \label{fig:forecast-4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/forecast-luna-detrended.npz.pdf}
+    \caption{The forecasted signal \texttt{moon.dat}.}
+    \label{fig:forecast-5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/forecast-wolf-detrended.npz.pdf}
+    \caption{The forecasted signal \texttt{sunspot.dat}.}
+    \label{fig:forecast-6}
+\end{figure}
+
+I'd like to make a note that the signal \texttt{luna.dat} was composed of two coordinates, the Right Ascension and
+Declination of the moon. For simplicity I combined these two with the root of the sum of the squares. Out of all the 
+signals provided in the second dataset I think the Wolf sunspot numbers were forecasted the best. There seems to be relatively
+sensible continuity in the forecasted signal and again we can fit a somewhat weak exponential decay trend to the forecast. We can also 
+clearly see from the plotted parameters of the decay fit for various AR model orders that the decay rate is smallest somewhere in the 
+middle. The absolute worst results were for the stock value signal. Even though I tried hard to remove any existing trends 
+the forecasted signal is not continuous as it contains a large gap between the last point of the input signal and the first forecasted 
+point. The shape seems to be somewhat similar to what we would expect except that when having a look at the absolute difference 
+we find that it is absolutely abysmal, reaching values of $10^3$. Fitting an exponential decay here also made little sense but 
+I did it anyway, only to find that the best decay rate was actually positive which really does not make sense. The moon signal 
+was forecasted relatively well I suppose. Due to the asymmetry of the signal (despite the detrending) the forecasted signal 
+is biased towards the positive values and with errors towards the end of the forecast reaching above $10^0$, I'm not sure 
+that this forecast would be the most useful. \\
+
+Due to being strapped for time I was not able to do any further analysis on the forecasted signals, barring a quick look at how 
+adding noise to the input signal affects the forecast. I evaluated this for only the simplest signal {val2.dat}, for three different 
+values of noise standard deviation. The results are plotted in Figures \ref{fig:noise-1}, \ref{fig:noise-2} and \ref{fig:noise-3}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf}
+    \caption{The forecasted signal \texttt{val2.dat} with added noise of standard deviation $0.1$.}
+    \label{fig:noise-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf}
+    \caption{The forecasted signal \texttt{val2.dat} with added noise of standard deviation $0.5$.}
+    \label{fig:noise-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf}
+    \caption{The forecasted signal \texttt{val2.dat} with added noise of standard deviation $0.75$.}
+    \label{fig:noise-3}
+\end{figure}
+
+The trend I spotted with the addition of increasing noise is that the best AR model order for the forecast rises with 
+the increasing standard deviation of the noise. In all examples the forecasted signal looks correct to the signal before it 
+but really lacks in amplitude despite my best efforts. We can see that a stronger value of noise really diminishes the amplitude 
+of the forecasted signal and with that the absolute difference from the control signal rises. Overall even with a 
+$\sigma = 0.75$ the forecasted signal still seems to match the shape of the input signal. Perhaps there exists a better way
+to adjust for the exponential decay. Our professor included an article called \textit{Why Yule-Walker Should Not Be Used 
+for Autoregressive Modeling} \cite{no-yw} which states that the Yule-Walker method is not the best method for AR model
+fitting and suggests a look at the Burg method, which will unfortunately have to be left for another time.
+
 
 \section{Conclusion and Comments}
+Overall I'm happy with the results that I was able to produce however I do feel that I could have done more. Especially 
+for forecasting of signals where half of the results I got were not really satisfactory. One thing I'd definitely take a look 
+at had I the time is the Burg method for AR model fitting. I'd also maybe like to do some more meta-studies on AR model forecasting, eg.
+how far into the future is it possible to reasonably forecast a signal. The task also lacks any really original data to 
+analyize which is a bit of a shame. On to the last task! Oh and whoever thought of exporting dates firstly in the format
+\texttt{JUN19}, and secondly for multiple years, cause me quite the headache.
 
 % Add references
 % \newpage
