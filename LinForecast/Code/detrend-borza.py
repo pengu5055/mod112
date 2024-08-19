@@ -22,8 +22,8 @@ with np.load("./LinForecast/Data/sanitized_data.npz") as d:
     popt, pcov = curve_fit(linear, y, data)
     yfit = linear(y, *popt)
 
-fig, ax = plt.subplots(1, 1, figsize=(8, 6), layout="compressed")
-
+fig, axs = plt.subplots(1, 2, figsize=(12, 5), layout="compressed")
+ax = axs[0]
 ax.plot(y, data, color=colors[2], label="Original Data")
 ax.plot(y, yfit, color="black", label="Linear Fit", lw=2, ls="--")
 ax.legend()
@@ -32,7 +32,13 @@ textstr = f"Linear Fit: $y = ax + b$\n$a = {popt[0]:.2e} \pm {pcov[0, 0]**0.5:.2
           + f"\n$b = {popt[1]:.2e} \pm {pcov[1, 1]**0.5:.2e}$"
 ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=12, horizontalalignment="left",
         verticalalignment="top", bbox=props, fontweight="bold")
-ax.set_title("Detrended Borza Data")
+ax.set_title("Original Broker Data")
+ax.set_xlabel("Sample")
+ax.set_ylabel("Amplitude")
+
+ax = axs[1]
+ax.plot(y, data - yfit, color=colors[2])
+ax.set_title("Detrended Broker Data")
 ax.set_xlabel("Sample")
 ax.set_ylabel("Amplitude")
 

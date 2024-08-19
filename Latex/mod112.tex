@@ -165,7 +165,49 @@ using the following formula:
 %
 however I used the \texttt{scipy.signal.freqz} for ease of use and to avoid any mistakes. 
 
+\subsection{Forecasting Signals}
+In the second subtask we've been provided some additional signals that we'll be using in combination with the signals from 
+the first subtask to study the performance of the AR model in forecasting. The supplied signals are plotted in Figure 
+\ref{fig:signals-2}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../LinForecast/Images/new-data.pdf}
+    \caption{The signals that we'll be adding to our analysis in the second subtask.}
+    \label{fig:signals-2}
+\end{figure}
+
+They represent a stock's value, ephemeris data for the moon and Wolf sunspot numbers. The instructions want us to
+forecast the signals using the AR model and compare the results with the actual data. We can do so by providing half 
+of the data to the model and then comparing the forecasted values with the actual values of the other half. We should also 
+have a look at how noise affects the model and the forecasted values.
+
 \section{Solution Overview}
+Due to my speedrunning of these tasks this task lacks any extra bells and whistles. I implemented the Yule-Walker 
+method using \texttt{numpy} and \texttt{scipy} by making a class \texttt{YuleWalker} that can be used to fit the 
+model and evaluate PSDs. It takes inputs of the time series and the order of the model. I really like classes in Python.
+They really serve well as containers for variables and their associated functions. The class also has a method to
+forecast the time series using the AR model. The results are presented in the following sections. Before we proceed 
+we need to detrend some of the signals. This was most commonly done by subtracting the mean of the signal, however I 
+encountered two special cases. The first was the CO2 atmospheric concentration signal to which I fit a square 
+polynomial and subtracted the fit from the signal. The second signal was the stock value signal which I detrended by
+the linear fit of the signal. The signals with their respective trends are plotted in Figures \ref{fig:detrended-1} 
+and \ref{fig:detrended-2}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/detrended-co2.pdf}
+    \caption{The CO2 atmospheric concentration signal with a square polynomial fit.}
+    \label{fig:detrended-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../LinForecast/Images/borza-detrended.pdf}
+    \caption{The stock value signal with a linear fit.}
+    \label{fig:detrended-2}
+\end{figure}
+
 \section{Results}
 \section{Conclusion and Comments}
 
