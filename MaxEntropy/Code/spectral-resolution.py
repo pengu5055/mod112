@@ -1,5 +1,5 @@
 """
-Plot filter behavior for different orders and evaluation densities.
+Plot spectrum resolution for different filter orders and peak distances.
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,18 +7,21 @@ import matplotlib as mpl
 from yw import YuleWalker
 import cmasher as cmr
 from time import time
+from scipy.stats import norm
+import scipy.signal as signal
+import pickle
 
 # Use custom style
 mpl.style.use('./ma-style.mplstyle')
 colors = cmr.take_cmap_colors('cmr.tropical', 8, cmap_range=(0.0, 0.85))
 
-# Load the signal
-data_path = "./SuppliedData/val2.dat"
-sig = np.genfromtxt(data_path)
-# data_path = "./MaxEntropy/Data/co2.dat"
-# with np.load("./MaxEntropy/Data/co2-detrended.npz") as data:
-#     sig = data["detrended"]
-N_eval = [16, 32, 64, 128, 256, 512, 1024, 2048]
+# Create the signal
+signals = []
+peak_distances = np.linspace(0.1, 1, 100)  # In rad/sample
+x = np.linspace(0, np.pi, 4096)
+for d in peak_distances:
+    sig = norm.pdf(x, loc=0.5, scale=0.05) + norm.pdf(x, loc=0.5+d, scale=0.05)
+    signals.append(sig)
 
 t_s = time()
 fft_spectra = np.abs(np.fft.fft(sig))**2
@@ -26,54 +29,69 @@ fft_spectra = fft_spectra[:len(fft_spectra)//2]
 fft_spectra = fft_spectra / np.max(fft_spectra)
 t_fft = time() - t_s
 
-# Interpolate or truncate data to fit the evaluation density
-fft_s = {}
-for N in N_eval:
-    fft_s[N] = np.interp(np.linspace(0, np.pi, N, endpoint=False), np.linspace(0, np.pi, len(fft_spectra), endpoint=False), fft_spectra)
+N_eval = [16, 32, 64, 128, 256, 512, 1024, 2048]
+orders = [2, 4, 8, 16, 32, 64, 128, 256, 512]
+if True:
+    spectra = {}
+    yw = {}
+    times = []
+    for o in orders:
+        times_row1 = []
+        for N in N_eval:
+            times_row2 = []
+            yw_row = []
+            for sig in signals:
+                t_s = time()
+                y = YuleWalker(sig, order=16)
+                y._freq(N=N)
+                w, psd = y.psd()
+                psd = np.abs(psd)**2
+                psd = psd / np.max(psd)
+                yw_row.append(psd)
+                times_row2.append(time() - t_s)
+            yw[N] = yw_row
+            times_row1.append(times_row2)
+        spectra[o] = yw
+    
+    with open('./MaxEntropy/Data/spectra.pickle', 'wb') as handle:
+        pickle.dump(spectra, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    with open('./MaxEntropy/Data/times.pickle', 'wb') as handle:
+        pickle.dump(times, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    print(f"Saved data to ./MaxEntropy/Data/spectra.pickle")
+    print(f"Saved data to ./MaxEntropy/Data/times.pickle")
+
+    # Find Peaks and Their FWHM
+    peaks = {}
+    fwhm = {}
+    for o, yw in spectra.items():
+        peaks[o] = []
+        fwhm[o] = []
+        for N, sigs in yw.items():
+            peaks_row = []
+            fwhm_row = []
+            for psd in sigs:
+                peaks_row.append(signal.find_peaks(psd, height=30)[0])
+                fwhm_row.append(signal.peak_widths(psd, peaks_row[-1], rel_height=0.5)[0])
+            peaks[o].append(peaks_row)
+            fwhm[o].append(fwhm_row)
+    
+    with open('./MaxEntropy/Data/peaks.pickle', 'wb') as handle:
+        pickle.dump(peaks, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    with open('./MaxEntropy/Data/fwhm.pickle', 'wb') as handle:
+        pickle.dump(fwhm, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+    quit()
+else:
+    with open('./MaxEntropy/Data/spectra.pickle', 'rb') as handle:
+        spectra = pickle.load(handle)
+    with open('./MaxEntropy/Data/times.pickle', 'rb') as handle:
+        times = pickle.load(handle)
 
 
-filters = {
-    "2": YuleWalker(sig, 2),
-    "4": YuleWalker(sig, 4),
-    "8": YuleWalker(sig, 8),
-    "16": YuleWalker(sig, 16),
-    "32": YuleWalker(sig, 32),
-    "64": YuleWalker(sig, 64),
-    "128": YuleWalker(sig, 128),
-    "256": YuleWalker(sig, 256),
-}
 
-spectra = {}
-times = []
-for f, yw in filters.items():
-    row = []
-    times_row = []
-    for N in N_eval:
-        t_s = time()
-        yw._freq(N=N)
-        w, psd = yw.psd()
-        psd = np.abs(psd)**2
-        psd = psd / np.max(psd)
-        row.append(psd)
-        times_row.append(time() - t_s)
-    row.append(w)
-    times.append(times_row)
-    spectra[f] = row
+print("yes boss")
 
-times = np.array(times) / t_fft
 
-abs_diff = []
-for f, yw in filters.items():
-    row = []
-    for i in range(len(N_eval)):
-        row.append(np.abs(spectra[f][i] - fft_s[N_eval[i]]).mean())
-
-    abs_diff.append(row)
-abs_diff = np.array(abs_diff)
-
-poly = {}
-for f, yw in filters.items():
-    poly[f] = np.roots(np.r_[1, -yw.R])
         
 # Plot Abs. diff from FFT
 fig, ax = plt.subplots(1, 3, figsize=(14, 4.5), layout="compressed")
@@ -143,7 +161,7 @@ for a in ax.flatten()[:-1]:
             a.plot([N_box[0], N_box[-1]], [filter_box[0], filter_box[0]], color="k", lw=3.5, zorder=6)
             a.plot([N_box[0], N_box[-1]], [filter_box[-1], filter_box[-1]], color="k", lw=3.5, zorder=6)
 
-plt.suptitle(f"Filter Behavior for Different Orders and Evaluation Densities on {data_path.split('/')[-1]}")
-plt.savefig(f"./MaxEntropy/Images/order-density-{data_path.split('/')[-1]}.pdf", dpi=500)
+plt.suptitle(f"Filter Behavior for")
+plt.savefig(f"./MaxEntropy/Images/s-res.pdf", dpi=500)
 plt.show()
 
