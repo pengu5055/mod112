@@ -57,20 +57,44 @@ for f, yw in filters.items():
 
     abs_diff.append(row)
 abs_diff = np.array(abs_diff)
-print(abs_diff.shape)
         
 # Plot Abs. diff from FFT
 fig, ax = plt.subplots(1, 3, figsize=(14, 5), layout="compressed")
+y_ticks = [int(f) for f in filters.keys()]
 
 cmap = cmr.get_sub_cmap('cmr.tropical', 0.0, 0.85)
 norm = mpl.colors.Normalize(vmin=abs_diff.min(), vmax=abs_diff.max())
-ax[0].imshow(abs_diff, cmap=cmap, norm=norm, aspect='auto', origin='lower',
-             extent=[N_eval[0], N_eval[-1], 0, len(filters)])
+sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+ax[0].imshow(abs_diff, cmap=cmap, norm=norm, aspect='auto', origin='lower', zorder=2,
+             extent=[0, len(N_eval), 0, len(filters)])
+cbar = fig.colorbar(sm, ax=ax[0], orientation='vertical', pad=0.015)
+cbar.set_label("Mean Absolute Difference")
 ax[0].set_title("Absolute Difference from FFT")
 ax[0].set_xlabel("Evaluation Density")
 ax[0].set_ylabel("Filter Order")
-# ax[0].set_yticks()
+ax[0].set_yticks(np.arange(0, len(filters), 1) + 1/2)
+ax[0].set_yticklabels(y_ticks)
+ax[0].set_xticks(np.arange(0, len(N_eval), 1) + 1/2)
+ax[0].set_xticklabels(N_eval)
 
+
+
+# Make frame between the cells of the heatmap
+for a in ax.flatten():
+    N_box = np.arange(0, len(N_eval) + 1, 1)
+    filter_box = np.arange(0, len(filters) + 1, 1)
+    for i in range(len(N_box)):
+        for j in range(len(filter_box)):
+            x1 = np.array([N_box[i], N_box[i]])
+            y1 = np.array([filter_box[j], filter_box[j-1]])
+            x2 = np.array([N_box[i-1], N_box[i]])
+            y2 = np.array([filter_box[j], filter_box[j]])
+            a.plot(x1, y1, color="k", lw=0.5, zorder=6)
+            a.plot(x2, y2, color="k", lw=0.5, zorder=6)
+            a.plot([N_box[0], N_box[0]], [filter_box[0], filter_box[-1]], color="k", lw=4.5, zorder=6)
+            a.plot([N_box[-1], N_box[-1]], [filter_box[0], filter_box[-1]], color="k", lw=4.5, zorder=6)
+            a.plot([N_box[0], N_box[-1]], [filter_box[0], filter_box[0]], color="k", lw=3.5, zorder=6)
+            a.plot([N_box[0], N_box[-1]], [filter_box[-1], filter_box[-1]], color="k", lw=3.5, zorder=6)
 
 plt.show()
 
