@@ -819,6 +819,10 @@ INPUT ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf
 INPUT ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf
 INPUT ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT ./mod112.bbl
+INPUT mod112.bbl
+INPUT ./mod112.bbl
+INPUT mod112.bbl
 INPUT mod112.aux
 INPUT ./mod112.out
 INPUT ./mod112.out

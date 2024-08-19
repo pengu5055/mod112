@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.7.16)  20 AUG 2024 00:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.7.16)  20 AUG 2024 00:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -428,285 +428,278 @@ File: ../MaxEntropy/Images/supplied-data.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/supplied-data.pdf>
 Package pdftex.def Info: ../MaxEntropy/Images/supplied-data.pdf  used on input line 153.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../LinForecast/Images/new-data.pdf, id=93, 867.24pt x 650.43pt>
+<../LinForecast/Images/new-data.pdf, id=94, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/new-data.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/new-data.pdf>
-Package pdftex.def Info: ../LinForecast/Images/new-data.pdf  used on input line 175.
+Package pdftex.def Info: ../LinForecast/Images/new-data.pdf  used on input line 176.
 (pdftex.def)             Requested size: 432.48051pt x 324.36067pt.
 [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.179 
+l.180 
        <../MaxEntropy/Images/supplied-data.pdf>]
-<../MaxEntropy/Images/detrended-co2.pdf, id=156, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/detrended-co2.pdf, id=158, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/detrended-co2.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/detrended-co2.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/detrended-co2.pdf  used on input line 199.
+Package pdftex.def Info: ../MaxEntropy/Images/detrended-co2.pdf  used on input line 200.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
  [3pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.203 
+l.204 
        <../LinForecast/Images/new-data.pdf>]
-<../LinForecast/Images/borza-detrended.pdf, id=227, 867.24pt x 361.35pt>
+<../LinForecast/Images/borza-detrended.pdf, id=229, 867.24pt x 361.35pt>
 File: ../LinForecast/Images/borza-detrended.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/borza-detrended.pdf>
-Package pdftex.def Info: ../LinForecast/Images/borza-detrended.pdf  used on input line 206.
+Package pdftex.def Info: ../LinForecast/Images/borza-detrended.pdf  used on input line 207.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../MaxEntropy/Images/yw-demo-val2.dat.pdf, id=231, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/yw-demo-val2.dat.pdf, id=233, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/yw-demo-val2.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/yw-demo-val2.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-val2.dat.pdf  used on input line 221.
+Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-val2.dat.pdf  used on input line 222.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.225 
+l.226 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.225 
+l.226 
        <../MaxEntropy/Images/detrended-co2.pdf> <../LinForecast/Images/borza-detrended.pdf>]
-<../MaxEntropy/Images/yw-demo-val3.dat.pdf, id=417, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/yw-demo-val3.dat.pdf, id=419, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/yw-demo-val3.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/yw-demo-val3.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-val3.dat.pdf  used on input line 228.
+Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-val3.dat.pdf  used on input line 229.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../MaxEntropy/Images/yw-demo-co2.dat.pdf, id=418, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/yw-demo-co2.dat.pdf, id=420, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/yw-demo-co2.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/yw-demo-co2.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-co2.dat.pdf  used on input line 235.
+Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-co2.dat.pdf  used on input line 236.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../MaxEntropy/Images/peak-widths-val2.dat.pdf, id=421, 1011.78pt x 361.35pt>
+<../MaxEntropy/Images/peak-widths-val2.dat.pdf, id=423, 1011.78pt x 361.35pt>
 File: ../MaxEntropy/Images/peak-widths-val2.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/peak-widths-val2.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/peak-widths-val2.dat.pdf  used on input line 247.
+Package pdftex.def Info: ../MaxEntropy/Images/peak-widths-val2.dat.pdf  used on input line 248.
 (pdftex.def)             Requested size: 432.48051pt x 154.45667pt.
  [5pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.251 
+l.252 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.251 
+l.252 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.251 
+l.252 
        <../MaxEntropy/Images/yw-demo-val2.dat.pdf> <../MaxEntropy/Images/yw-demo-val3.dat.pdf> <../MaxEntropy/Images/yw-demo-co2.dat.pdf>]
-<../MaxEntropy/Images/peak-widths-val3.dat.pdf, id=655, 1011.78pt x 361.35pt>
+<../MaxEntropy/Images/peak-widths-val3.dat.pdf, id=657, 1011.78pt x 361.35pt>
 File: ../MaxEntropy/Images/peak-widths-val3.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/peak-widths-val3.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/peak-widths-val3.dat.pdf  used on input line 254.
+Package pdftex.def Info: ../MaxEntropy/Images/peak-widths-val3.dat.pdf  used on input line 255.
 (pdftex.def)             Requested size: 432.48051pt x 154.45667pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--269
+Underfull \hbox (badness 10000) in paragraph at lines 260--270
 
  []
 
-<../MaxEntropy/Images/fft-ar-model-compare.pdf, id=657, 867.24pt x 578.16pt>
+<../MaxEntropy/Images/fft-ar-model-compare.pdf, id=659, 867.24pt x 578.16pt>
 File: ../MaxEntropy/Images/fft-ar-model-compare.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/fft-ar-model-compare.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/fft-ar-model-compare.pdf  used on input line 276.
+Package pdftex.def Info: ../MaxEntropy/Images/fft-ar-model-compare.pdf  used on input line 277.
 (pdftex.def)             Requested size: 432.48051pt x 288.32059pt.
 [6pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.280 
+l.281 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.280 
+l.281 
        <../MaxEntropy/Images/peak-widths-val2.dat.pdf> <../MaxEntropy/Images/peak-widths-val3.dat.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 281--285
+Underfull \hbox (badness 10000) in paragraph at lines 282--286
 
  []
 
-<../MaxEntropy/Images/order-density-val2.dat.pdf, id=848, 1011.78pt x 325.215pt>
+<../MaxEntropy/Images/order-density-val2.dat.pdf, id=850, 1011.78pt x 325.215pt>
 File: ../MaxEntropy/Images/order-density-val2.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/order-density-val2.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/order-density-val2.dat.pdf  used on input line 292.
+Package pdftex.def Info: ../MaxEntropy/Images/order-density-val2.dat.pdf  used on input line 293.
 (pdftex.def)             Requested size: 432.48051pt x 139.011pt.
-<../MaxEntropy/Images/order-density-val3.dat.pdf, id=849, 1011.78pt x 325.215pt>
+<../MaxEntropy/Images/order-density-val3.dat.pdf, id=851, 1011.78pt x 325.215pt>
 File: ../MaxEntropy/Images/order-density-val3.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/order-density-val3.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/order-density-val3.dat.pdf  used on input line 299.
+Package pdftex.def Info: ../MaxEntropy/Images/order-density-val3.dat.pdf  used on input line 300.
 (pdftex.def)             Requested size: 432.48051pt x 139.011pt.
 [7pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 
+l.304 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 
+l.304 
        <../MaxEntropy/Images/fft-ar-model-compare.pdf> <../MaxEntropy/Images/order-density-val2.dat.pdf>]
-<../MaxEntropy/Images/order-density-co2.dat.pdf, id=1096, 1011.78pt x 325.215pt>
+<../MaxEntropy/Images/order-density-co2.dat.pdf, id=1098, 1011.78pt x 325.215pt>
 File: ../MaxEntropy/Images/order-density-co2.dat.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/order-density-co2.dat.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/order-density-co2.dat.pdf  used on input line 306.
+Package pdftex.def Info: ../MaxEntropy/Images/order-density-co2.dat.pdf  used on input line 307.
 (pdftex.def)             Requested size: 432.48051pt x 139.011pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--320
+Underfull \hbox (badness 10000) in paragraph at lines 312--321
 
  []
 
-<../MaxEntropy/Images/s-res.pdf, id=1099, 722.7pt x 650.43pt>
+<../MaxEntropy/Images/s-res.pdf, id=1101, 722.7pt x 650.43pt>
 File: ../MaxEntropy/Images/s-res.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/s-res.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/s-res.pdf  used on input line 328.
+Package pdftex.def Info: ../MaxEntropy/Images/s-res.pdf  used on input line 329.
 (pdftex.def)             Requested size: 432.48051pt x 389.22884pt.
 [8pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.332 
+l.333 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.332 
+l.333 
        <../MaxEntropy/Images/order-density-val3.dat.pdf> <../MaxEntropy/Images/order-density-co2.dat.pdf>]
-<../MaxEntropy/Images/test-spectra.pdf, id=1335, 578.16pt x 361.35pt>
+<../MaxEntropy/Images/test-spectra.pdf, id=1337, 578.16pt x 361.35pt>
 File: ../MaxEntropy/Images/test-spectra.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/test-spectra.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/test-spectra.pdf  used on input line 335.
+Package pdftex.def Info: ../MaxEntropy/Images/test-spectra.pdf  used on input line 336.
 (pdftex.def)             Requested size: 364.19667pt x 227.61862pt.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.346 
+l.347 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.346 
+l.347 
        <../MaxEntropy/Images/s-res.pdf> <../MaxEntropy/Images/test-spectra.pdf>]
-<../MaxEntropy/Images/ar-spectra.pdf, id=1522, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/ar-spectra.pdf, id=1524, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/ar-spectra.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/ar-spectra.pdf>
-Package pdftex.def Info: ../MaxEntropy/Images/ar-spectra.pdf  used on input line 349.
+Package pdftex.def Info: ../MaxEntropy/Images/ar-spectra.pdf  used on input line 350.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../LinForecast/Images/forecast-val2.dat.pdf, id=1526, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-val2.dat.pdf, id=1528, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-val2.dat.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-val2.dat.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-val2.dat.pdf  used on input line 363.
+Package pdftex.def Info: ../LinForecast/Images/forecast-val2.dat.pdf  used on input line 364.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/forecast-val3.dat.pdf, id=1527, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-val3.dat.pdf, id=1529, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-val3.dat.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-val3.dat.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-val3.dat.pdf  used on input line 370.
+Package pdftex.def Info: ../LinForecast/Images/forecast-val3.dat.pdf  used on input line 371.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
  [10pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.374 
+l.375 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.374 
+l.375 
        <../MaxEntropy/Images/ar-spectra.pdf> <../LinForecast/Images/forecast-val2.dat.pdf>]
-<../LinForecast/Images/forecast-co2.dat.pdf, id=1761, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-co2.dat.pdf, id=1763, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-co2.dat.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-co2.dat.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-co2.dat.pdf  used on input line 377.
+Package pdftex.def Info: ../LinForecast/Images/forecast-co2.dat.pdf  used on input line 378.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 382--389
+Underfull \hbox (badness 10000) in paragraph at lines 383--390
 
  []
 
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.389 
+l.390 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.389 
+l.390 
        <../LinForecast/Images/forecast-val3.dat.pdf> <../LinForecast/Images/forecast-co2.dat.pdf>]
-<../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf, id=2050, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf, id=2052, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf  used on input line 395.
+Package pdftex.def Info: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf  used on input line 396.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/forecast-luna-detrended.npz.pdf, id=2051, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-luna-detrended.npz.pdf, id=2053, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-luna-detrended.npz.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-luna-detrended.npz.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-luna-detrended.npz.pdf  used on input line 402.
+Package pdftex.def Info: ../LinForecast/Images/forecast-luna-detrended.npz.pdf  used on input line 403.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/forecast-wolf-detrended.npz.pdf, id=2052, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-wolf-detrended.npz.pdf, id=2054, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-wolf-detrended.npz.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf  used on input line 409.
+Package pdftex.def Info: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf  used on input line 410.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
  [12pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.413 
+l.414 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.413 
+l.414 
        <../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf> <../LinForecast/Images/forecast-luna-detrended.npz.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 414--427
+Underfull \hbox (badness 10000) in paragraph at lines 415--428
 
  []
 
-<../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf, id=2352, 867.24pt x 650.43pt>
+<../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf, id=2354, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf>
-Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf  used on input line 434.
+Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf  used on input line 435.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
 [13pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.438 
+l.439 
        <../LinForecast/Images/forecast-wolf-detrended.npz.pdf>]
-<../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf, id=2504, 867.24pt x 650.43pt>
+<../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf, id=2506, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf>
-Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf  used on input line 441.
+Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf  used on input line 442.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf, id=2505, 867.24pt x 650.43pt>
+<../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf, id=2507, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf>
-Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf  used on input line 448.
+Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf  used on input line 449.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
  [14pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.452 
+l.453 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.452 
-       <../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf> <../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf>]
-
-Package natbib Warning: Citation `no-yw' on page 15 undefined on input line 459.
-
-
-Package natbib Warning: There were undefined citations.
-
-[15pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
+l.453 
+       <../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf> <../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf>] [15pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.477 \end{document}
-                     <../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf>] (./mod112.aux)
+l.473 \newpage
+               <../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf>] (./mod112.bbl) [16] (./mod112.aux)
 Package rerunfilecheck Info: File `mod112.out' has not changed.
 (rerunfilecheck)             Checksum: CC6E7B7830482F04E00ED391724EB717;1155.
  ) 
 Here is how much of TeX's memory you used:
- 10774 strings out of 480247
- 180213 string characters out of 5896151
- 479747 words of memory out of 5000000
- 28478 multiletter control sequences out of 15000+600000
+ 10789 strings out of 480247
+ 180390 string characters out of 5896151
+ 479776 words of memory out of 5000000
+ 28486 multiletter control sequences out of 15000+600000
  474514 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,9n,63p,290b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on mod112.pdf (16 pages, 1880495 bytes).
+Output written on mod112.pdf (17 pages, 1884241 bytes).
 PDF statistics:
- 3031 PDF objects out of 3580 (max. 8388607)
- 642 compressed objects within 7 object streams
- 57 named destinations out of 1000 (max. 500000)
+ 3041 PDF objects out of 3580 (max. 8388607)
+ 651 compressed objects within 7 object streams
+ 61 named destinations out of 1000 (max. 500000)
  203 words of extra memory for PDF output out of 10000 (max. 10000000)
 
