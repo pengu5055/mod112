@@ -8,6 +8,7 @@ from yw import YuleWalker
 import cmasher as cmr
 from time import time
 from scipy.stats import norm
+import scipy.fft as fft
 import scipy.signal as signal
 import pickle
 
@@ -17,21 +18,50 @@ colors = cmr.take_cmap_colors('cmr.tropical', 8, cmap_range=(0.0, 0.85))
 
 # Create the signal
 signals = []
-peak_distances = np.linspace(0.1, 1, 100)  # In rad/sample
-x = np.linspace(0, np.pi, 4096)
+peak_distances = np.linspace(0.001, 0.01, 8)  # In rad/sample
+x = np.linspace(0, 1, 4096)
 for d in peak_distances:
-    sig = norm.pdf(x, loc=0.5, scale=0.05) + norm.pdf(x, loc=0.5+d, scale=0.05)
+    # sig = norm.pdf(x, loc=0.5, scale=0.05) + norm.pdf(x, loc=0.5+d, scale=0.05)
+    sig = np.sin(5000 * np.pi * x) + np.sin(5000*(1+d) * np.pi * x)
     signals.append(sig)
+
+d = fft.fft(signals[0])[:2048]
+d = np.abs(d)**2
+d = d / np.max(d)
+data_len = len(x)
+SAMPLE_RATE = 2*np.pi
+data_time = 1/SAMPLE_RATE * data_len
+freq = np.linspace(0.0, 1.0/(2.0*(data_time/data_len)), data_len//2)
+
+if False:
+    cm = cmr.take_cmap_colors("cmr.tropical", len(peak_distances), cmap_range=(0.0, 0.85))
+    fig, ax = plt.subplots(1, 1, figsize=(8, 5))
+    for i, sig in enumerate(signals):
+        d = fft.fft(sig)[:2048]
+        d = np.abs(d)**2
+        d = d / np.max(d)
+        ax.plot(freq, d, label=f"Rel. Peak Distance: {peak_distances[i]:.3f}", color=cm[i])
+    
+    plt.suptitle("Spectra of Test Signals with Different Peak Distances")
+    ax.set_xlabel("Frequency [rad/sample]")
+    ax.set_ylabel("Power Spectrum Density")
+    ax.legend()
+    ax.set_xlim(2.3, 2.5)
+    plt.savefig(f"./MaxEntropy/Images/test-spectra.pdf", dpi=500)
+    plt.show()
 
 t_s = time()
 fft_spectra = np.abs(np.fft.fft(sig))**2
 fft_spectra = fft_spectra[:len(fft_spectra)//2]
 fft_spectra = fft_spectra / np.max(fft_spectra)
 t_fft = time() - t_s
+fft_peaks = signal.find_peaks(fft_spectra, height=0.05)[0]
+fft_fwhm = signal.peak_widths(fft_spectra, fft_peaks, rel_height=0.5)[0]
+fft_res = fft_peaks[1] - fft_peaks[0]
 
 N_eval = [16, 32, 64, 128, 256, 512, 1024, 2048]
 orders = [2, 4, 8, 16, 32, 64, 128, 256, 512]
-if True:
+if False:
     spectra = {}
     yw = {}
     times = []
@@ -70,7 +100,7 @@ if True:
             peaks_row = []
             fwhm_row = []
             for psd in sigs:
-                peaks_row.append(signal.find_peaks(psd, height=30)[0])
+                peaks_row.append(signal.find_peaks(psd, height=0.05)[0])
                 fwhm_row.append(signal.peak_widths(psd, peaks_row[-1], rel_height=0.5)[0])
             peaks[o].append(peaks_row)
             fwhm[o].append(fwhm_row)
@@ -86,68 +116,69 @@ else:
         spectra = pickle.load(handle)
     with open('./MaxEntropy/Data/times.pickle', 'rb') as handle:
         times = pickle.load(handle)
+    with open('./MaxEntropy/Data/peaks.pickle', 'rb') as handle:
+        peaks = pickle.load(handle)
+    with open('./MaxEntropy/Data/fwhm.pickle', 'rb') as handle:
+        fwhm = pickle.load(handle)
 
+R_power = []
+for o, f in peaks.items():
+    R_power_row2 = []
+    for sigs in f:
+        R_power_row = []
+        for p in sigs:
+            if len(p) <= 1:
+                R_power_row.append(0)
+            else:
+                R_power_row.append((p[1] - p[0])/fft_res)
+        R_power_row2.append(R_power_row)
+    R_power.append(R_power_row2)
 
+if False:
+    fig, ax = plt.subplots(1, 3, figsize=(12, 5))
+    for j, s in enumerate([2, 16, 32]):
+        for i in range(8):
+            ax[j].plot(freq, spectra[s][2048][i], color=colors[i], lw=2,
+                       label=f"Distance: {peak_distances[i]:.3f}")
+            ax[j].set_title(f"Order: {s}")
+            ax[j].set_xlabel("Frequency [rad/sample]")
+            ax[j].set_ylabel("Power Spectrum Density")
+            ax[j].set_xlim(2.3, 2.5)
+            ax[j].legend(ncols=1, loc="upper left", fontsize=8)
 
-print("yes boss")
-
+    plt.suptitle("AR Spectra w/ Different Peak Distances")
+    plt.savefig(f"./MaxEntropy/Images/ar-spectra.pdf", dpi=500)
+    plt.tight_layout()
+    plt.show()
 
         
 # Plot Abs. diff from FFT
-fig, ax = plt.subplots(1, 3, figsize=(14, 4.5), layout="compressed")
-y_ticks = [int(f) for f in filters.keys()]
+fig, ax = plt.subplots(3, 3, figsize=(10, 9))
+y_ticks = peak_distances
 
 cmap = cmr.get_sub_cmap('cmr.tropical', 0.0, 0.85)
-norm = mpl.colors.LogNorm(vmin=abs_diff.min(), vmax=abs_diff.max())
+norm = mpl.colors.Normalize(vmin=0, vmax=1)
+for i, f in enumerate(R_power):
+    ax.flatten()[i].imshow(f, cmap=cmap, aspect="auto", origin="lower",
+                           extent=[0, len(N_eval), 0, len(peak_distances)], zorder=2)
+    ax.flatten()[i].set_xticks(np.arange(len(N_eval)) + 1/2)
+    ax.flatten()[i].set_xticklabels(N_eval, rotation=35)
+    ax.flatten()[i].set_yticks(np.arange(len(peak_distances)) + 1/2)
+    ax.flatten()[i].set_yticklabels([f"{p:.3f}" for p in peak_distances])
+    ax.flatten()[i].set_xlabel("Evaluation Density")
+    ax.flatten()[i].set_ylabel("Peak Distance")
+    ax.flatten()[i].set_title(f"Order: {orders[i]}")
+    ax.flatten()[i].grid(False)
+
+cbar_ax = fig.add_axes([0.875, 0.08, 0.025, 0.8])
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
-ax[0].imshow(abs_diff, cmap=cmap, norm=norm, aspect='auto', origin='lower', zorder=2,
-             extent=[0, len(N_eval), 0, len(filters)])
-cbar = fig.colorbar(sm, ax=ax[0], orientation='vertical', pad=0.015
-                    )
-cbar.set_label("Mean Absolute Difference")
-ax[0].set_title("Absolute Difference from FFT")
-ax[0].set_xlabel("Evaluation Density")
-ax[0].set_ylabel("Filter Order")
-ax[0].set_yticks(np.arange(0, len(filters), 1) + 1/2)
-ax[0].set_yticklabels(y_ticks)
-ax[0].set_xticks(np.arange(0, len(N_eval), 1) + 1/2)
-ax[0].set_xticklabels(N_eval)
-
-
-ax[1].set_title("Computation Time vs. FFT")
-norm = mpl.colors.LogNorm(vmin=times.min(), vmax=times.max())
-sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
-ax[1].imshow(times, cmap=cmap, norm=norm, aspect='auto', origin='lower', zorder=2,
-                extent=[0, len(N_eval), 0, len(filters)])
-props = dict(boxstyle='round', facecolor='black', alpha=0.2)
-textstr = f"FFT Evaluation Time: {t_fft:.2e} s"
-ax[1].text(0.03, 0.95, textstr, transform=ax[1].transAxes, fontsize=12,
-              verticalalignment='top', color="white", zorder=10, bbox=props)
-cbar = fig.colorbar(sm, ax=ax[1], orientation='vertical', pad=0.015)
-cbar.set_label("Relative Time to FFT")
-ax[1].set_xlabel("Evaluation Density")
-ax[1].set_ylabel("Filter Order")
-ax[1].set_yticks(np.arange(0, len(filters), 1) + 1/2)
-ax[1].set_yticklabels(y_ticks)
-ax[1].set_xticks(np.arange(0, len(N_eval), 1) + 1/2)
-ax[1].set_xticklabels(N_eval)
-
-ax[2].set_title("Char. Polynomial Roots")
-ax[2].set_xlabel("Real")
-ax[2].set_ylabel("Imaginary")
-for i, a in enumerate(poly.items()):
-    f, p = a
-    ax[2].scatter(np.real(p), np.imag(p), label=f"Order {f}", color=colors[i], alpha=0.6)
-ax[2].legend(ncols=3, loc="upper left", fontsize=8)
-ax[2].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color="k", lw=3, ls="--", zorder=2)
-ax[2].set_xlim(-1.5, 1.5)
-ax[2].set_ylim(-1.5, 1.5)
-
+cbar = fig.colorbar(sm, cax=cbar_ax, aspect=20)
+cbar.set_label("Relative Resolution Power vs. FFT", labelpad=10)
 
 # Make frame between the cells of the heatmap
-for a in ax.flatten()[:-1]:
+for a in ax.flatten():
     N_box = np.arange(0, len(N_eval) + 1, 1)
-    filter_box = np.arange(0, len(filters) + 1, 1)
+    filter_box = np.arange(0, len(peak_distances) + 1, 1)
     for i in range(len(N_box)):
         for j in range(len(filter_box)):
             x1 = np.array([N_box[i], N_box[i]])
@@ -161,7 +192,8 @@ for a in ax.flatten()[:-1]:
             a.plot([N_box[0], N_box[-1]], [filter_box[0], filter_box[0]], color="k", lw=3.5, zorder=6)
             a.plot([N_box[0], N_box[-1]], [filter_box[-1], filter_box[-1]], color="k", lw=3.5, zorder=6)
 
-plt.suptitle(f"Filter Behavior for")
+plt.suptitle(f"Resolution Power of AR vs. FFT")
 plt.savefig(f"./MaxEntropy/Images/s-res.pdf", dpi=500)
+plt.subplots_adjust(right=0.85, top=0.9, bottom=0.07, left=0.08, hspace=0.6, wspace=0.5)
 plt.show()
 
