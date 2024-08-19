@@ -16,7 +16,7 @@ colors = cmr.take_cmap_colors('cmr.tropical', 8, cmap_range=(0.0, 0.85))
 
 
 # Load the signal
-data_path = "./SuppliedData/val3.dat"
+data_path = "./SuppliedData/val2.dat"
 sig = np.genfromtxt(data_path)
 
 filters = {

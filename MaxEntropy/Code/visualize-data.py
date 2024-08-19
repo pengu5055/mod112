@@ -12,8 +12,12 @@ mpl.style.use("./ma-style.mplstyle")
 colors = cmr.take_cmap_colors('cmr.tropical', 8, cmap_range=(0, 0.85))
 
 # Load data
-load_file = "./SuppliedData/val2.dat"
-sig = np.genfromtxt(load_file)
+load_file = "./SuppliedData/co2.dat"
+# sig = np.genfromtxt(load_file)
+with np.load("./MaxEntropy/Data/co2-detrended.npz") as d:
+    y = d["years"]
+    sig = d["detrended"]
+
 
 # Plot the data
 fig, ax = plt.subplots(1, 2, figsize=(12, 5), layout="compressed")

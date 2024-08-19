@@ -199,7 +199,6 @@ plt.subplots_adjust(right=0.85, top=0.9, bottom=0.07, left=0.08, hspace=0.6, wsp
 plt.savefig(f"./MaxEntropy/Images/time-res.pdf", dpi=500)
 plt.show()
 
-quit()
 
 fig, ax = plt.subplots(3, 3, figsize=(10, 9))
 y_ticks = peak_distances
@@ -241,6 +240,6 @@ for a in ax.flatten():
             a.plot([N_box[0], N_box[-1]], [filter_box[-1], filter_box[-1]], color="k", lw=3.5, zorder=6)
 
 plt.suptitle(f"Resolution Power of AR vs. FFT")
-plt.savefig(f"./MaxEntropy/Images/s-res.pdf", dpi=500)
 plt.subplots_adjust(right=0.85, top=0.9, bottom=0.07, left=0.08, hspace=0.6, wspace=0.5)
+plt.savefig(f"./MaxEntropy/Images/s-res.pdf", dpi=500)
 plt.show()

@@ -13,11 +13,11 @@ mpl.style.use('./ma-style.mplstyle')
 colors = cmr.take_cmap_colors('cmr.tropical', 8, cmap_range=(0.0, 0.85))
 
 # Load the signal
-data_path = "./SuppliedData/val2.dat"
-sig = np.genfromtxt(data_path)
-# data_path = "./MaxEntropy/Data/co2.dat"
-# with np.load("./MaxEntropy/Data/co2-detrended.npz") as data:
-#     sig = data["detrended"]
+# data_path = "./SuppliedData/val3.dat"
+# sig = np.genfromtxt(data_path)
+data_path = "./MaxEntropy/Data/co2.dat"
+with np.load("./MaxEntropy/Data/co2-detrended.npz") as data:
+    sig = data["detrended"]
 N_eval = [16, 32, 64, 128, 256, 512, 1024, 2048]
 
 t_s = time()
@@ -83,36 +83,36 @@ cmap = cmr.get_sub_cmap('cmr.tropical', 0.0, 0.85)
 norm = mpl.colors.LogNorm(vmin=abs_diff.min(), vmax=abs_diff.max())
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 ax[0].imshow(abs_diff, cmap=cmap, norm=norm, aspect='auto', origin='lower', zorder=2,
-             extent=[0, len(N_eval), 0, len(filters)])
+             extent=[0, len(filters), 0, len(N_eval)])
 cbar = fig.colorbar(sm, ax=ax[0], orientation='vertical', pad=0.015
                     )
 cbar.set_label("Mean Absolute Difference")
 ax[0].set_title("Absolute Difference from FFT")
-ax[0].set_xlabel("Evaluation Density")
-ax[0].set_ylabel("Filter Order")
-ax[0].set_yticks(np.arange(0, len(filters), 1) + 1/2)
-ax[0].set_yticklabels(y_ticks)
-ax[0].set_xticks(np.arange(0, len(N_eval), 1) + 1/2)
-ax[0].set_xticklabels(N_eval)
+ax[0].set_ylabel("Evaluation Density")
+ax[0].set_xlabel("Filter Order")
+ax[0].set_xticks(np.arange(0, len(filters), 1) + 1/2)
+ax[0].set_xticklabels(y_ticks)
+ax[0].set_yticks(np.arange(0, len(N_eval), 1) + 1/2)
+ax[0].set_yticklabels(N_eval)
 
 
 ax[1].set_title("Computation Time vs. FFT")
 norm = mpl.colors.LogNorm(vmin=times.min(), vmax=times.max())
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 ax[1].imshow(times, cmap=cmap, norm=norm, aspect='auto', origin='lower', zorder=2,
-                extent=[0, len(N_eval), 0, len(filters)])
+                extent=[0, len(filters), 0, len(N_eval)])
 props = dict(boxstyle='round', facecolor='black', alpha=0.2)
 textstr = f"FFT Evaluation Time: {t_fft:.2e} s"
 ax[1].text(0.03, 0.95, textstr, transform=ax[1].transAxes, fontsize=12,
               verticalalignment='top', color="white", zorder=10, bbox=props)
 cbar = fig.colorbar(sm, ax=ax[1], orientation='vertical', pad=0.015)
 cbar.set_label("Relative Time to FFT")
-ax[1].set_xlabel("Evaluation Density")
-ax[1].set_ylabel("Filter Order")
-ax[1].set_yticks(np.arange(0, len(filters), 1) + 1/2)
-ax[1].set_yticklabels(y_ticks)
-ax[1].set_xticks(np.arange(0, len(N_eval), 1) + 1/2)
-ax[1].set_xticklabels(N_eval)
+ax[1].set_ylabel("Evaluation Density")
+ax[1].set_xlabel("Filter Order")
+ax[1].set_xticks(np.arange(0, len(filters), 1) + 1/2)
+ax[1].set_xticklabels(y_ticks)
+ax[1].set_yticks(np.arange(0, len(N_eval), 1) + 1/2)
+ax[1].set_yticklabels(N_eval)
 
 ax[2].set_title("Char. Polynomial Roots")
 ax[2].set_xlabel("Real")

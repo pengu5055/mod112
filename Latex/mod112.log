@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.7.16)  19 AUG 2024 22:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.7.16)  19 AUG 2024 23:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -383,7 +383,7 @@ LaTeX Info: Redefining \nameref on input line 38.
 \@outlinefile=\write3
 \openout3 = `mod112.out'.
 
-<logo_fmf.pdf, id=32, 233.03412pt x 141.6228pt>
+<logo_fmf.pdf, id=36, 233.03412pt x 141.6228pt>
 File: logo_fmf.pdf Graphic file (type pdf)
 <use logo_fmf.pdf>
 Package pdftex.def Info: logo_fmf.pdf  used on input line 43.
@@ -424,12 +424,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.143 
        [1]
-<../MaxEntropy/Images/supplied-data.pdf, id=82, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/supplied-data.pdf, id=87, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/supplied-data.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/supplied-data.pdf>
 Package pdftex.def Info: ../MaxEntropy/Images/supplied-data.pdf  used on input line 153.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../LinForecast/Images/new-data.pdf, id=84, 867.24pt x 650.43pt>
+<../LinForecast/Images/new-data.pdf, id=89, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/new-data.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/new-data.pdf>
 Package pdftex.def Info: ../LinForecast/Images/new-data.pdf  used on input line 175.
@@ -439,7 +439,7 @@ Package pdftex.def Info: ../LinForecast/Images/new-data.pdf  used on input line 
                                                   \__shipout_drop_firstpage_...
 l.179 
        <../MaxEntropy/Images/supplied-data.pdf>]
-<../MaxEntropy/Images/detrended-co2.pdf, id=146, 867.24pt x 361.35pt>
+<../MaxEntropy/Images/detrended-co2.pdf, id=151, 867.24pt x 361.35pt>
 File: ../MaxEntropy/Images/detrended-co2.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/detrended-co2.pdf>
 Package pdftex.def Info: ../MaxEntropy/Images/detrended-co2.pdf  used on input line 199.
@@ -449,36 +449,164 @@ Package pdftex.def Info: ../MaxEntropy/Images/detrended-co2.pdf  used on input l
                                                   \__shipout_drop_firstpage_...
 l.203 
        <../LinForecast/Images/new-data.pdf>]
-<../LinForecast/Images/borza-detrended.pdf, id=217, 867.24pt x 361.35pt>
+<../LinForecast/Images/borza-detrended.pdf, id=222, 867.24pt x 361.35pt>
 File: ../LinForecast/Images/borza-detrended.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/borza-detrended.pdf>
 Package pdftex.def Info: ../LinForecast/Images/borza-detrended.pdf  used on input line 206.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
+<../MaxEntropy/Images/yw-demo-val2.dat.pdf, id=226, 867.24pt x 361.35pt>
+File: ../MaxEntropy/Images/yw-demo-val2.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/yw-demo-val2.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-val2.dat.pdf  used on input line 221.
+(pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+l.225 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 \end{document}
-                     <../MaxEntropy/Images/detrended-co2.pdf> <../LinForecast/Images/borza-detrended.pdf>] (./mod112.aux)
+l.225 
+       <../MaxEntropy/Images/detrended-co2.pdf> <../LinForecast/Images/borza-detrended.pdf>]
+<../MaxEntropy/Images/yw-demo-val3.dat.pdf, id=412, 867.24pt x 361.35pt>
+File: ../MaxEntropy/Images/yw-demo-val3.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/yw-demo-val3.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-val3.dat.pdf  used on input line 228.
+(pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
+<../MaxEntropy/Images/yw-demo-co2.dat.pdf, id=413, 867.24pt x 361.35pt>
+File: ../MaxEntropy/Images/yw-demo-co2.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/yw-demo-co2.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/yw-demo-co2.dat.pdf  used on input line 235.
+(pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
+<../MaxEntropy/Images/peak-widths-val2.dat.pdf, id=416, 1011.78pt x 361.35pt>
+File: ../MaxEntropy/Images/peak-widths-val2.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/peak-widths-val2.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/peak-widths-val2.dat.pdf  used on input line 247.
+(pdftex.def)             Requested size: 432.48051pt x 154.45667pt.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.251 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.251 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.251 
+       <../MaxEntropy/Images/yw-demo-val2.dat.pdf> <../MaxEntropy/Images/yw-demo-val3.dat.pdf> <../MaxEntropy/Images/yw-demo-co2.dat.pdf>]
+<../MaxEntropy/Images/peak-widths-val3.dat.pdf, id=650, 1011.78pt x 361.35pt>
+File: ../MaxEntropy/Images/peak-widths-val3.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/peak-widths-val3.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/peak-widths-val3.dat.pdf  used on input line 254.
+(pdftex.def)             Requested size: 432.48051pt x 154.45667pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--269
+
+ []
+
+<../MaxEntropy/Images/fft-ar-model-compare.pdf, id=652, 867.24pt x 578.16pt>
+File: ../MaxEntropy/Images/fft-ar-model-compare.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/fft-ar-model-compare.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/fft-ar-model-compare.pdf  used on input line 276.
+(pdftex.def)             Requested size: 432.48051pt x 288.32059pt.
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.280 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.280 
+       <../MaxEntropy/Images/peak-widths-val2.dat.pdf> <../MaxEntropy/Images/peak-widths-val3.dat.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 281--285
+
+ []
+
+<../MaxEntropy/Images/order-density-val2.dat.pdf, id=843, 1011.78pt x 325.215pt>
+File: ../MaxEntropy/Images/order-density-val2.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/order-density-val2.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/order-density-val2.dat.pdf  used on input line 292.
+(pdftex.def)             Requested size: 432.48051pt x 139.011pt.
+<../MaxEntropy/Images/order-density-val3.dat.pdf, id=844, 1011.78pt x 325.215pt>
+File: ../MaxEntropy/Images/order-density-val3.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/order-density-val3.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/order-density-val3.dat.pdf  used on input line 299.
+(pdftex.def)             Requested size: 432.48051pt x 139.011pt.
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.303 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.303 
+       <../MaxEntropy/Images/fft-ar-model-compare.pdf> <../MaxEntropy/Images/order-density-val2.dat.pdf>]
+<../MaxEntropy/Images/order-density-co2.dat.pdf, id=1091, 1011.78pt x 325.215pt>
+File: ../MaxEntropy/Images/order-density-co2.dat.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/order-density-co2.dat.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/order-density-co2.dat.pdf  used on input line 306.
+(pdftex.def)             Requested size: 432.48051pt x 139.011pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--320
+
+ []
+
+<../MaxEntropy/Images/s-res.pdf, id=1094, 722.7pt x 650.43pt>
+File: ../MaxEntropy/Images/s-res.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/s-res.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/s-res.pdf  used on input line 328.
+(pdftex.def)             Requested size: 432.48051pt x 389.22884pt.
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.332 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.332 
+       <../MaxEntropy/Images/order-density-val3.dat.pdf> <../MaxEntropy/Images/order-density-co2.dat.pdf>]
+<../MaxEntropy/Images/test-spectra.pdf, id=1330, 578.16pt x 361.35pt>
+File: ../MaxEntropy/Images/test-spectra.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/test-spectra.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/test-spectra.pdf  used on input line 335.
+(pdftex.def)             Requested size: 432.48051pt x 270.30055pt.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.339 
+       <../MaxEntropy/Images/s-res.pdf>]
+<../MaxEntropy/Images/ar-spectra.pdf, id=1433, 867.24pt x 361.35pt>
+File: ../MaxEntropy/Images/ar-spectra.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/ar-spectra.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/ar-spectra.pdf  used on input line 349.
+(pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.363 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.363 \end{document}
+                     <../MaxEntropy/Images/test-spectra.pdf> <../MaxEntropy/Images/ar-spectra.pdf>] (./mod112.aux)
 Package rerunfilecheck Info: File `mod112.out' has not changed.
-(rerunfilecheck)             Checksum: 40E717F988FCDF011B8F778BBE864A51;847.
+(rerunfilecheck)             Checksum: 16AD21C333875AF551E6D4ACE4B1C407;1000.
  ) 
 Here is how much of TeX's memory you used:
- 10567 strings out of 480247
- 172137 string characters out of 5896151
- 480086 words of memory out of 5000000
- 28327 multiletter control sequences out of 15000+600000
+ 10684 strings out of 480247
+ 176429 string characters out of 5896151
+ 481087 words of memory out of 5000000
+ 28413 multiletter control sequences out of 15000+600000
  474168 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,9n,63p,265b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,9n,63p,290b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on mod112.pdf (5 pages, 350718 bytes).
+Output written on mod112.pdf (11 pages, 1060205 bytes).
 PDF statistics:
- 453 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1667 PDF objects out of 1728 (max. 8388607)
+ 408 compressed objects within 5 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 150 words of extra memory for PDF output out of 10000 (max. 10000000)
 

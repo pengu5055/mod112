@@ -146,7 +146,7 @@ results, as any roots outside the unit circle will make the model unstable. \\
 The instructions want us to plot the spectra of a few different signals that have been provided. The main comparison 
 should be between the spectra given by the AR model and the spectra given by the Fourier transform. The FFT algorithm 
 is truly a marvel of modern mathematics and computing so it will definitely be a tough competitor. The signals that have 
-been provided are plotted in Figure \ref{fig:signals} with their respective spectra computed using FFT.
+been provided are plotted in Figure \ref{fig:signals}.
 
 \begin{figure}[H]
     \centering
@@ -209,6 +209,149 @@ and \ref{fig:detrended-2}.
 \end{figure}
 
 \section{Results}
+\subsection{Spectra of Signals}
+As described above I used the \texttt{scipy.signal.freqz} function to evaluate the spectra of the signals. The results 
+are plotted in Figures \ref{fig:spectra-1}, \ref{fig:spectra-2} and \ref{fig:spectra-3}. The AR model seems to do a 
+fantastic job at approximating the spectra of the signals. The absolute scale of the spectra are larger than expected however 
+they match up relatively well with the FFT spectra. What is definitely visible are the wider peaks in the AR model spectra 
+compared to the FFT spectra. I think it makes sense to study the width of the peaks a bit more in depth.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/yw-demo-val2.dat.pdf}
+    \caption{The spectra signal \texttt{val2.dat}.}
+    \label{fig:spectra-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/yw-demo-val3.dat.pdf}
+    \caption{The spectra signal \texttt{val3.dat}.}
+    \label{fig:spectra-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/yw-demo-co2.dat.pdf}
+    \caption{The spectra signal \texttt{co2.dat}.}
+    \label{fig:spectra-3}
+\end{figure}
+
+As stated above lets have a look at the width of peaks in the spectra. I evaluated the widths with the help of 
+\texttt{scipy.signal.find\_peaks} and \texttt{scipy.signal.peak\_widths} on signals \texttt{val2.dat} and \texttt{val3.dat}.
+The results are plotted in Figures \ref{fig:width-1} and \ref{fig:width-2}. Plotted alongside are also the roots of the 
+characteristic polynomial for each model.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/peak-widths-val2.dat.pdf}
+    \caption{The peak widths/heights of the spectra of signal \texttt{val2.dat}.}
+    \label{fig:width-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/peak-widths-val3.dat.pdf}
+    \caption{The peak widths/heights of the spectra of signal \texttt{val3.dat}.}
+    \label{fig:width-2}
+\end{figure}
+
+These plots are a bit more information dense so it makes sense to give some explanation. The left-most plot shows the relative 
+inverse peak height as compared to the FFT spectra. The inverse height meaning that the values plotted present 
+$\frac{1}{\text{height}}$. This was done due to a massive range in the heights of the peaks which generally depend on the order 
+of the filter as we can also see from the plot. There seems to be a relatively steady downwards trend in the inverse peak height, which 
+means that they are growing. A similar trend can be seen in the middle subplot which represents the relative peak widths. Do note, that 
+there is no inverse in play here. We can see that the widths of the peaks narrow as the order of the AR model rises. For low 
+values of the AR model order the peaks are much wider than the FFT peaks. In fact they more resemble bumps rather than 
+sharp peaks. The right-most plot shows the roots of the characteristic polynomial of the AR model. The main focus here was to check 
+that all of the roots are inside the unit circle which is also plotted. The roots seem to be stable. I find the way the roots spread around 
+in the complex plane incredibly fascinating. \\
+
+For a better comparison between the AR model and the FFT spectra I plotted all the spectra on the same plot. Do note here that 
+the AR and FFT spectra have been normalized such that we look at relative differences in scale, not absolute. The result 
+is presented in Figure \ref{fig:all-spectra}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/fft-ar-model-compare.pdf}
+    \caption{All the spectra of the signals on the same plot.}
+    \label{fig:all-spectra}
+\end{figure}
+
+Again for the sense of safety and to check our methods I've also included the roots of the polynomials on the same plot.
+I'd like the reader to note that the AR models are not of the same order. The AR model order was chosen based on what I felt 
+empiricaly gave the best results. We see that the spectra line up very nicely. There are some differences but we can see 
+that for all the provided signals the mean absolute error is in the order of $10^{-3}$. \\ 
+
+Lastly lets have a look at the effects filter order and number of evaluation points (evaluation density) have on the
+spectra. This time I've also included \texttt{co2.dat} in the analysis. The results are plotted in Figures 
+\ref{fig:order-1}, \ref{fig:order-2} and \ref{fig:order-3}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/order-density-val2.dat.pdf}
+    \caption{The effects of filter order and evaluation density on the spectra of signal \texttt{val2.dat}.}
+    \label{fig:order-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/order-density-val3.dat.pdf}
+    \caption{The effects of filter order and evaluation density on the spectra of signal \texttt{val3.dat}.}
+    \label{fig:order-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/order-density-co2.dat.pdf}
+    \caption{The effects of filter order and evaluation density on the spectra of signal \texttt{co2.dat}.}
+    \label{fig:order-3}
+\end{figure}
+
+The bright colors in combination with the bolded grid really remind me of a 80s dance floor, I hope the reader enjoys
+the visual experience. The plots show that both the filter order and evaluation density have a significant impact 
+on the spectra. One would naively expect that the absolute difference from the FFT spectra would decrease with 
+increasing filter order, however that is not the case. In the plot for \texttt{val2.dat} and \texttt{val3} we see that the absolute
+difference is lowest for the AR model of order $32$. The evaluation density has a lesser effect on the spectra, only comming 
+into play when the density is very low and the peaks are not well resolved. In addition to absolute differences I've also plotted 
+the computational times in comparison to the FFT spectra, where we can see that the AR model is comparable in speed 
+to the FFT algorithm at the filter orders that yielded the best results. The right-most plot is there again for a 
+sanity check to confirm that all of the roots are inside the unit circle. \\
+
+It would be interesting to what the resolving power of an AR model is. What I mean by this is how close can to peaks 
+be in the spectra for them to still be resolved. I did a little parameter scan for a couple of different values of filter 
+order, peak separation distance and spectra evaluation density. The results of the scan are plotted in Figure 
+\ref{fig:resolving-power}. The FFT spectra from the scan test signals are plotted in the Figure \ref{fig:resolving-power-test}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/s-res.pdf}
+    \caption{The 'resolving power' of the AR model. Unresolved is colored in purple.}
+    \label{fig:resolving-power}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/test-spectra.pdf}
+    \caption{The test spectra by FFT from the resolving power scan.}
+    \label{fig:resolving-power-test}
+\end{figure}
+
+All resolving powers are compared to how far apart the peaks are in the FFT spectra. This plot represents one of my major disappointments
+during this task in that, there is no dependence on the filter order, at least not in the range that I scanned. The results are 
+the same for all filter orders. We can however see that in the range that I've provided only a small section of the parameter 
+space contains peaks that actually managed to resolve. The majority of the peaks were not resolved to my great disappointment.
+I inspected the spectra for any possible errors but they truly do seem to not resolve. The subset of the resultant spectra 
+are plotted in Figure \ref{fig:resolving-power-spectra}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../MaxEntropy/Images/ar-spectra.pdf}
+    \caption{The subset of the spectra, where we can see most of the peaks are unresolved.}
+    \label{fig:resolving-power-spectra}
+\end{figure}
+
+
 \section{Conclusion and Comments}
 
 % Add references
