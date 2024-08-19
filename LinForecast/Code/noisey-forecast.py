@@ -1,6 +1,6 @@
 """
 Forecast signal by giving half of the signal to the Yule-Walker method,
-and predict the next half of the signal.
+and predict the next half of the signal. Add noise to the input signal.
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,26 +18,10 @@ mpl.style.use("./ma-style.mplstyle")
 colors = cmr.take_cmap_colors("cmr.tropical", 8, cmap_range=(0, 0.85))
 
 # Load data
-if False:
-    load_path = "./SuppliedData/val3.dat"
+if True:
+    load_path = "./SuppliedData/val2.dat"
     data = np.loadtxt(load_path)
     p0 = [1e3, -1e-6]
-elif False:
-    load_path = "./SuppliedData/co2-detrended.npz"
-    with np.load("./MaxEntropy/Data/co2-detrended.npz") as data:
-        y = data["years"]
-        data = data["detrended"]
-        p0 = [1e-3, -1e-6]
-elif True:
-    load_path = "./SuppliedData/borza-detrended.npz"
-    with np.load("./LinForecast/Data/sanitized_data.npz") as d:
-        y = range(len(d["data1"]))
-        data = d["data1"]
-        p0 = [1e10, -1e-10]
-        def linear(x, a, b):
-            return a*x + b
-        popt, pcov = curve_fit(linear, y, data)
-        data = data - linear(y, *popt)
 
 
 # Split the data in half
@@ -45,12 +29,15 @@ print(len(data))
 split = len(data) // 2
 data1 = data[:split]
 data2 = data[split:]
+data1_original = np.copy(data1)
 
-orders = np.array([4, 8, 6, 8, 10, 16, 24, 32]) * 11
+orders = np.array([4, 8, 6, 8, 10, 16, 24, 32]) * 4
 fit_par = []
 fit_cov = []
 pred = []
 peaks = []
+sigma = 0.75
+data1 += np.random.normal(data1.mean(), sigma, len(data1))
 for o in orders:
     yw = YuleWalker(data1, o)
     data_with_p = np.copy(data1)
@@ -88,15 +75,18 @@ x_input_axis = range(0, split)
 x_forecast_axis = range(split, len(data))
 
 ax[0].set_visible(True)
-ax[0].plot([], [], color=colors[0], label="Input Data")
+ax[0].plot([], [], color=colors[0], label="Clean Input Data")
+ax[0].fill_between([], [], color=colors[0], label="Noisy Input Data", alpha=0.3)
 ax[0].plot([], [], color=colors[1], label=f"{b_order}th Order (Best Forecast)")
 ax[0].scatter([], [], color=colors[7], label="Positive Peaks", s=10)
 ax[0].plot([], [], color="black", lw=1, ls="--", label="Exponential Fit", alpha=0.8)
 
-textstr = f"Forecasted Signal {load_path.split('/')[-1]}"
-ax[0].text(0.5, 0.7, textstr, transform=ax[0].transAxes, fontsize=18, fontweight="bold",
+textstr = f"Forecasted Signal {load_path.split('/')[-1]}\nfrom Noisey Input Data"
+ax[0].text(0.5, 0.72, textstr, transform=ax[0].transAxes, fontsize=18, fontweight="bold",
             verticalalignment="center", horizontalalignment="center")
-ax[0].text(0.5, 0.66, f"\nBest AR Model was {b_order}th Order", transform=ax[0].transAxes, fontsize=14,
+ax[0].text(0.5, 0.64, f"\nBest AR Model was {b_order}th Order", transform=ax[0].transAxes, fontsize=14,
+            verticalalignment="center", horizontalalignment="center")
+ax[0].text(0.5, 0.58, f"\nNormal Noise with $\\sigma = {sigma}$", transform=ax[0].transAxes, fontsize=14,
             verticalalignment="center", horizontalalignment="center")
 for i, p in enumerate(pred):
     ax[0].plot([], [], alpha=0.5, color=colors[i], label=f"Abs. Err. {orders[i]}th Order")
@@ -115,7 +105,9 @@ ax[0].legend(loc="lower center", fontsize=10, ncols=2)
 print(len(data1), len(data2))
 print(np.array(b_predictions).shape)
 print(np.array(x_forecast_axis).shape)
-ax[1].plot(data1, color=colors[0], label="Input Data")
+ax[1].plot(data1_original, color=colors[0], label="Input Data")
+ax[1].fill_between(x_input_axis, data1_original+sigma, data1_original-sigma,
+                    color=colors[0], label="Noisy Input Data", alpha=0.3)
 ax[1].plot(x_forecast_axis, b_predictions, color=colors[1], label="Forecast")
 ax[1].scatter(b_peaks, b_values, color=colors[7], label="Positive Peaks", s=10)
 ax[1].plot(b_fit_x, b_fit, color="black", lw=2, ls="--", label="Exponential Fit", alpha=0.8)
@@ -165,8 +157,8 @@ std = np.array(fit_cov)[:, 1, 1]**0.5
 ax[3].fill_between(orders, np.array(fit_par)[:, 1] - std, np.array(fit_par)[:, 1] + std, 
                    color=colors[1], alpha=0.2, zorder=5)
 props = dict(facecolor='white', alpha=1, edgecolor="black", lw=0.5)
-ax[3].text(0.6, 0.5, "Makes no sense to fit a\ndecay envelope to the data", transform=ax[3].transAxes, fontsize=12,
-              verticalalignment="center", horizontalalignment="center", bbox=props)
+# ax[3].text(0.6, 0.5, "Makes no sense to fit a\ndecay envelope to the data", transform=ax[3].transAxes, fontsize=12,
+#               verticalalignment="center", horizontalalignment="center", bbox=props)
 
-plt.savefig(f"./LinForecast/Images/forecast-{load_path.split('/')[-1]}-lin.pdf", dpi=500)
+plt.savefig(f"./LinForecast/Images/noisey-forecast-{load_path.split('/')[-1]}-{sigma}.pdf", dpi=500)
 plt.show()
