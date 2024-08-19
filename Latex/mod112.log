@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.7.16)  20 AUG 2024 00:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.7.16)  20 AUG 2024 00:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -585,121 +585,130 @@ File: ../MaxEntropy/Images/ar-spectra.pdf Graphic file (type pdf)
 <use ../MaxEntropy/Images/ar-spectra.pdf>
 Package pdftex.def Info: ../MaxEntropy/Images/ar-spectra.pdf  used on input line 350.
 (pdftex.def)             Requested size: 432.48051pt x 180.20036pt.
-<../LinForecast/Images/forecast-val2.dat.pdf, id=1528, 867.24pt x 650.43pt>
-File: ../LinForecast/Images/forecast-val2.dat.pdf Graphic file (type pdf)
-<use ../LinForecast/Images/forecast-val2.dat.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-val2.dat.pdf  used on input line 364.
-(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/forecast-val3.dat.pdf, id=1529, 867.24pt x 650.43pt>
-File: ../LinForecast/Images/forecast-val3.dat.pdf Graphic file (type pdf)
-<use ../LinForecast/Images/forecast-val3.dat.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-val3.dat.pdf  used on input line 371.
-(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
+<../MaxEntropy/Images/time-res.pdf, id=1526, 722.7pt x 650.43pt>
+File: ../MaxEntropy/Images/time-res.pdf Graphic file (type pdf)
+<use ../MaxEntropy/Images/time-res.pdf>
+Package pdftex.def Info: ../MaxEntropy/Images/time-res.pdf  used on input line 360.
+(pdftex.def)             Requested size: 364.19667pt x 327.77478pt.
  [10pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.375 
+l.371 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.375 
-       <../MaxEntropy/Images/ar-spectra.pdf> <../LinForecast/Images/forecast-val2.dat.pdf>]
-<../LinForecast/Images/forecast-co2.dat.pdf, id=1763, 867.24pt x 650.43pt>
+l.371 
+       <../MaxEntropy/Images/ar-spectra.pdf> <../MaxEntropy/Images/time-res.pdf>]
+<../LinForecast/Images/forecast-val2.dat.pdf, id=1716, 867.24pt x 650.43pt>
+File: ../LinForecast/Images/forecast-val2.dat.pdf Graphic file (type pdf)
+<use ../LinForecast/Images/forecast-val2.dat.pdf>
+Package pdftex.def Info: ../LinForecast/Images/forecast-val2.dat.pdf  used on input line 374.
+(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
+<../LinForecast/Images/forecast-val3.dat.pdf, id=1717, 867.24pt x 650.43pt>
+File: ../LinForecast/Images/forecast-val3.dat.pdf Graphic file (type pdf)
+<use ../LinForecast/Images/forecast-val3.dat.pdf>
+Package pdftex.def Info: ../LinForecast/Images/forecast-val3.dat.pdf  used on input line 381.
+(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
+<../LinForecast/Images/forecast-co2.dat.pdf, id=1718, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/forecast-co2.dat.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/forecast-co2.dat.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-co2.dat.pdf  used on input line 378.
+Package pdftex.def Info: ../LinForecast/Images/forecast-co2.dat.pdf  used on input line 388.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 383--390
-
- []
-
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) has been already used, duplicate ignored
+ [11pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.390 
+l.392 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.390 
-       <../LinForecast/Images/forecast-val3.dat.pdf> <../LinForecast/Images/forecast-co2.dat.pdf>]
-<../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf, id=2052, 867.24pt x 650.43pt>
-File: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf Graphic file (type pdf)
-<use ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf  used on input line 396.
-(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/forecast-luna-detrended.npz.pdf, id=2053, 867.24pt x 650.43pt>
-File: ../LinForecast/Images/forecast-luna-detrended.npz.pdf Graphic file (type pdf)
-<use ../LinForecast/Images/forecast-luna-detrended.npz.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-luna-detrended.npz.pdf  used on input line 403.
-(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/forecast-wolf-detrended.npz.pdf, id=2054, 867.24pt x 650.43pt>
-File: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf Graphic file (type pdf)
-<use ../LinForecast/Images/forecast-wolf-detrended.npz.pdf>
-Package pdftex.def Info: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf  used on input line 410.
-(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.414 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.414 
-       <../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf> <../LinForecast/Images/forecast-luna-detrended.npz.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 415--428
+l.392 
+       <../LinForecast/Images/forecast-val2.dat.pdf> <../LinForecast/Images/forecast-val3.dat.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 393--400
 
  []
 
-<../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf, id=2354, 867.24pt x 650.43pt>
+<../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf, id=2012, 867.24pt x 650.43pt>
+File: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf Graphic file (type pdf)
+<use ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf>
+Package pdftex.def Info: ../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf  used on input line 406.
+(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.410 
+       <../LinForecast/Images/forecast-co2.dat.pdf>]
+<../LinForecast/Images/forecast-luna-detrended.npz.pdf, id=2160, 867.24pt x 650.43pt>
+File: ../LinForecast/Images/forecast-luna-detrended.npz.pdf Graphic file (type pdf)
+<use ../LinForecast/Images/forecast-luna-detrended.npz.pdf>
+Package pdftex.def Info: ../LinForecast/Images/forecast-luna-detrended.npz.pdf  used on input line 413.
+(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
+<../LinForecast/Images/forecast-wolf-detrended.npz.pdf, id=2161, 867.24pt x 650.43pt>
+File: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf Graphic file (type pdf)
+<use ../LinForecast/Images/forecast-wolf-detrended.npz.pdf>
+Package pdftex.def Info: ../LinForecast/Images/forecast-wolf-detrended.npz.pdf  used on input line 420.
+(pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.424 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.424 
+       <../LinForecast/Images/forecast-borza-detrended.npz-lin.pdf> <../LinForecast/Images/forecast-luna-detrended.npz.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 425--438
+
+ []
+
+<../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf, id=2458, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf>
-Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf  used on input line 435.
+Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf  used on input line 445.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-[13pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) has been already used, duplicate ignored
+[14pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.439 
+l.449 
        <../LinForecast/Images/forecast-wolf-detrended.npz.pdf>]
-<../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf, id=2506, 867.24pt x 650.43pt>
+<../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf, id=2609, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf>
-Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf  used on input line 442.
+Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf  used on input line 452.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
-<../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf, id=2507, 867.24pt x 650.43pt>
+<../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf, id=2610, 867.24pt x 650.43pt>
 File: ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf Graphic file (type pdf)
 <use ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf>
-Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf  used on input line 449.
+Package pdftex.def Info: ../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf  used on input line 459.
 (pdftex.def)             Requested size: 364.19667pt x 273.14896pt.
- [14pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) has been already used, duplicate ignored
+ [15pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.453 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
+l.463 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.453 
-       <../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf> <../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf>] [15pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
+l.463 
+       <../LinForecast/Images/noisey-forecast-val2.dat-0.1.pdf> <../LinForecast/Images/noisey-forecast-val2.dat-0.5.pdf>] [16pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.473 \newpage
-               <../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf>] (./mod112.bbl) [16] (./mod112.aux)
+l.483 \newpage
+               <../LinForecast/Images/noisey-forecast-val2.dat-0.75.pdf>] (./mod112.bbl) [17] (./mod112.aux)
 Package rerunfilecheck Info: File `mod112.out' has not changed.
 (rerunfilecheck)             Checksum: CC6E7B7830482F04E00ED391724EB717;1155.
  ) 
 Here is how much of TeX's memory you used:
- 10789 strings out of 480247
- 180390 string characters out of 5896151
- 479776 words of memory out of 5000000
- 28486 multiletter control sequences out of 15000+600000
+ 10799 strings out of 480247
+ 180692 string characters out of 5896151
+ 479871 words of memory out of 5000000
+ 28493 multiletter control sequences out of 15000+600000
  474514 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,9n,63p,290b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on mod112.pdf (17 pages, 1884241 bytes).
+Output written on mod112.pdf (18 pages, 1984282 bytes).
 PDF statistics:
- 3041 PDF objects out of 3580 (max. 8388607)
- 651 compressed objects within 7 object streams
- 61 named destinations out of 1000 (max. 500000)
- 203 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3144 PDF objects out of 3580 (max. 8388607)
+ 679 compressed objects within 7 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 208 words of extra memory for PDF output out of 10000 (max. 10000000)
 

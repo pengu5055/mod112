@@ -352,6 +352,16 @@ are plotted in Figure \ref{fig:resolving-power-spectra}.
     \label{fig:resolving-power-spectra}
 \end{figure}
 
+From this scan I was able to make a neat looking plot of execution times. It doesn't really have all that much value
+now that we've seen that the filter order doesn't really matter. The plot is presented in Figure \ref{fig:execution-times}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../MaxEntropy/Images/time-res.pdf}
+    \caption{The execution times of the AR model in comparison to the FFT algorithm.}
+    \label{fig:execution-times}
+\end{figure}
+
 \subsection{Forecasting Signals}
 As the instructions stated I used the AR model to forecast the various signals that were provided.. to varying 
 degrees of success. The simpler signals from the first subtask were forecasted relatively well, excluding the fact that 
