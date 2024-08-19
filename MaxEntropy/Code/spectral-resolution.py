@@ -81,6 +81,7 @@ if False:
                 times_row2.append(time() - t_s)
             yw[N] = yw_row
             times_row1.append(times_row2)
+        times.append(times_row1)
         spectra[o] = yw
     
     with open('./MaxEntropy/Data/spectra.pickle', 'wb') as handle:
@@ -157,6 +158,53 @@ fig, ax = plt.subplots(3, 3, figsize=(10, 9))
 y_ticks = peak_distances
 
 cmap = cmr.get_sub_cmap('cmr.tropical', 0.0, 0.85)
+times = np.array(times) / t_fft
+norm = mpl.colors.Normalize(vmin=np.min(times), vmax=np.max(times))
+for i, t in enumerate(times):
+    ax.flatten()[i].imshow(t, cmap=cmap, aspect="auto", origin="lower", norm=norm,
+                           extent=[0, len(N_eval), 0, len(peak_distances)], zorder=2)
+    ax.flatten()[i].set_xticks(np.arange(len(N_eval)) + 1/2)
+    ax.flatten()[i].set_xticklabels(N_eval, rotation=35)
+    ax.flatten()[i].set_yticks(np.arange(len(peak_distances)) + 1/2)
+    ax.flatten()[i].set_yticklabels([f"{p:.3f}" for p in peak_distances])
+    ax.flatten()[i].set_xlabel("Evaluation Density")
+    ax.flatten()[i].set_ylabel("Peak Distance")
+    ax.flatten()[i].set_title(f"Order: {orders[i]}")
+    ax.flatten()[i].grid(False)
+
+cbar_ax = fig.add_axes([0.875, 0.08, 0.025, 0.8])
+sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+cbar = fig.colorbar(sm, cax=cbar_ax, aspect=20)
+cbar.set_label("Relative Computation Time", labelpad=10)
+
+# Make frame between the cells of the heatmap
+for a in ax.flatten():
+    N_box = np.arange(0, len(N_eval) + 1, 1)
+    filter_box = np.arange(0, len(peak_distances) + 1, 1)
+    for i in range(len(N_box)):
+        for j in range(len(filter_box)):
+            x1 = np.array([N_box[i], N_box[i]])
+            y1 = np.array([filter_box[j], filter_box[j-1]])
+            x2 = np.array([N_box[i-1], N_box[i]])
+            y2 = np.array([filter_box[j], filter_box[j]])
+            a.plot(x1, y1, color="k", lw=0.5, zorder=6)
+            a.plot(x2, y2, color="k", lw=0.5, zorder=6)
+            a.plot([N_box[0], N_box[0]], [filter_box[0], filter_box[-1]], color="k", lw=4.5, zorder=6)
+            a.plot([N_box[-1], N_box[-1]], [filter_box[0], filter_box[-1]], color="k", lw=4.5, zorder=6)
+            a.plot([N_box[0], N_box[-1]], [filter_box[0], filter_box[0]], color="k", lw=3.5, zorder=6)
+            a.plot([N_box[0], N_box[-1]], [filter_box[-1], filter_box[-1]], color="k", lw=3.5, zorder=6)
+
+plt.suptitle(f"Computation Time of AR vs. FFT")
+plt.subplots_adjust(right=0.85, top=0.9, bottom=0.07, left=0.08, hspace=0.6, wspace=0.5)
+plt.savefig(f"./MaxEntropy/Images/time-res.pdf", dpi=500)
+plt.show()
+
+quit()
+
+fig, ax = plt.subplots(3, 3, figsize=(10, 9))
+y_ticks = peak_distances
+
+cmap = cmr.get_sub_cmap('cmr.tropical', 0.0, 0.85)
 norm = mpl.colors.Normalize(vmin=0, vmax=1)
 for i, f in enumerate(R_power):
     ax.flatten()[i].imshow(f, cmap=cmap, aspect="auto", origin="lower",
@@ -196,4 +244,3 @@ plt.suptitle(f"Resolution Power of AR vs. FFT")
 plt.savefig(f"./MaxEntropy/Images/s-res.pdf", dpi=500)
 plt.subplots_adjust(right=0.85, top=0.9, bottom=0.07, left=0.08, hspace=0.6, wspace=0.5)
 plt.show()
-
