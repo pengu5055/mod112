@@ -18,8 +18,16 @@ mpl.style.use("./ma-style.mplstyle")
 colors = cmr.take_cmap_colors("cmr.tropical", 8, cmap_range=(0, 0.85))
 
 # Load data
-load_path = "./SuppliedData/val2.dat"
-data = np.loadtxt(load_path)
+if False:
+    load_path = "./SuppliedData/val3.dat"
+    data = np.loadtxt(load_path)
+    p0 = [1e3, -1e-6]
+else:
+    load_path = "./SuppliedData/co2-detrended.npz"
+    with np.load("./MaxEntropy/Data/co2-detrended.npz") as data:
+        y = data["years"]
+        data = data["detrended"]
+        p0 = [1e-3, -1e-6]
 
 # Split the data in half
 split = len(data) // 2
@@ -36,7 +44,7 @@ for i in range(256):
     predictions.append(prediction)
     data_with_p = np.append(data_with_p, prediction)
 
-orders = [2, 4, 8, 6, 8, 10, 16, 24]
+orders = np.array([4, 8, 6, 8, 10, 16, 24, 32]) * 2
 fit_par = []
 fit_cov = []
 pred = []
@@ -45,14 +53,14 @@ for o in orders:
     yw = YuleWalker(data1, o)
     data_with_p = np.copy(data1)
     predictions = []
-    for i in range(256):
+    for i in range(len(data2)):
         prediction = yw.predict_next_value(data_with_p)
         predictions.append(prediction)
         data_with_p = np.append(data_with_p, prediction)
-    p_peaks = signal.find_peaks(predictions, height=0.02)[0]
+    p_peaks = signal.find_peaks(predictions, height=0.05)[0]
     p_values = np.array([predictions[i] for i in p_peaks])
     p_peaks += split
-    popt, pcov = curve_fit(exp, p_peaks, p_values, p0=[1e10, -1e-2])
+    popt, pcov = curve_fit(exp, p_peaks, p_values, p0=p0)
     fit_par.append(popt)
     fit_cov.append(pcov)
     pred.append(predictions)
@@ -87,8 +95,8 @@ ax[0].text(0.5, 0.66, f"\nBest AR Model was {b_order}th Order", transform=ax[0].
 for i, p in enumerate(pred):
     ax[0].plot([], [], alpha=0.5, color=colors[i], label=f"Abs. Err. {orders[i]}th Order")
 
-ax[0].plot([], [], color=colors[6], label="Amplitude")
-ax[0].fill_between([], [], color=colors[6], alpha=0.2, label="Amplitude Std. Dev.")
+ax[0].plot([], [], color=colors[6], label="Envelope Max Amplitude")
+ax[0].fill_between([], [], color=colors[6], alpha=0.2, label="Max Amplitude Std. Dev.")
 ax[0].plot([], [], color=colors[1], label="Decay Rate", zorder=5)
 ax[0].fill_between([], [], color=colors[1], alpha=0.2, zorder=5, label="Decay Rate Std. Dev.")
 ax[0].axis('off')
@@ -98,6 +106,9 @@ ax[0].legend(loc="lower center", fontsize=10, ncols=2)
 
 
 # Signal View and Fit
+print(len(data1), len(data2))
+print(np.array(b_predictions).shape)
+print(np.array(x_forecast_axis).shape)
 ax[1].plot(data1, color=colors[0], label="Input Data")
 ax[1].plot(x_forecast_axis, b_predictions, color=colors[1], label="Forecast")
 ax[1].scatter(b_peaks, b_values, color=colors[7], label="Positive Peaks", s=10)
@@ -106,13 +117,16 @@ ax[1].plot(b_fit_x, -b_fit, color="black", lw=2, ls="--", alpha=0.8)
 props = dict(facecolor='white', alpha=1, edgecolor="black", lw=0.5)
 textstr = f"Exponential Fit: $y = a \cdot e^{{b \cdot x}}$\n$a = {popt[0]:.2e} \pm {pcov[0, 0]**2:.2e}$" \
           f"\n$b = {popt[1]:.2e} \pm {pcov[1, 1]**2:.2e}$"
-ax[1].text(0.97, 0.96, textstr, transform=ax[1].transAxes, fontsize=10, fontweight="bold",
-            verticalalignment="top", horizontalalignment="right", bbox=props)
+ax[1].text(0.97, 0.04, textstr, transform=ax[1].transAxes, fontsize=10, fontweight="bold",
+            verticalalignment="bottom", horizontalalignment="right", bbox=props)
 # ax[1].legend()
 
 # Abs. diff from data2
 for i, p in enumerate(pred):
+    if i == b_max:
+        continue
     ax[2].plot(np.abs(data2 - p), alpha=0.8, color=colors[i])
+ax[2].plot(np.abs(data2 - b_predictions), alpha=1, color=colors[b_max], zorder=5, lw=1.5)
 
 ax[2].set_yscale("log")
 ax[2].set_ylabel("Abs. Diff. from Second Half of Signal")
