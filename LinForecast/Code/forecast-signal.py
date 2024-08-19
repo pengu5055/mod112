@@ -22,29 +22,28 @@ if False:
     load_path = "./SuppliedData/val3.dat"
     data = np.loadtxt(load_path)
     p0 = [1e3, -1e-6]
-else:
+elif False:
     load_path = "./SuppliedData/co2-detrended.npz"
     with np.load("./MaxEntropy/Data/co2-detrended.npz") as data:
         y = data["years"]
         data = data["detrended"]
         p0 = [1e-3, -1e-6]
+elif True:
+    load_path = "./SuppliedData/borza-detrended.npz"
+    with np.load("./LinForecast/Data/sanitized_data.npz") as d:
+        y = range(len(d["data1"]))
+        data = d["data1"]
+        data -= data.mean()
+        # y = d["time3"]
+        p0 = [1e10, -1e-10]
 
 # Split the data in half
+print(len(data))
 split = len(data) // 2
 data1 = data[:split]
 data2 = data[split:]
 
-# Forecast the second half of the signal
-order = 5
-yw = YuleWalker(data1, order)
-data_with_p = np.copy(data1)
-predictions = []
-for i in range(256):
-    prediction = yw.predict_next_value(data_with_p)
-    predictions.append(prediction)
-    data_with_p = np.append(data_with_p, prediction)
-
-orders = np.array([4, 8, 6, 8, 10, 16, 24, 32]) * 2
+orders = np.array([4, 8, 6, 8, 10, 16, 24, 32]) * 10
 fit_par = []
 fit_cov = []
 pred = []
@@ -57,7 +56,7 @@ for o in orders:
         prediction = yw.predict_next_value(data_with_p)
         predictions.append(prediction)
         data_with_p = np.append(data_with_p, prediction)
-    p_peaks = signal.find_peaks(predictions, height=0.05)[0]
+    p_peaks = signal.find_peaks(predictions, height=0.01*np.max(data))[0]
     p_values = np.array([predictions[i] for i in p_peaks])
     p_peaks += split
     popt, pcov = curve_fit(exp, p_peaks, p_values, p0=p0)
@@ -72,8 +71,12 @@ b_peaks, b_values = peaks[b_max]
 b_order = orders[b_max]
 b_predictions = pred[b_max]
 popt = fit_par[b_max]
-b_fit_x = np.linspace(b_peaks.min(), b_peaks.max(), 100)
+b_fit_x = np.linspace(split, len(data), 100)
 b_fit = exp(b_fit_x, *popt)
+
+plt.scatter(b_peaks, b_values, color=colors[7], label="Positive Peaks", s=10)
+plt.plot(b_fit_x, b_fit, color="black", lw=2, ls="--", label="Exponential Fit", alpha=0.8)
+plt.show()
 
 # Plot the data and the forecast
 fig, ax = plt.subplots(2, 2, figsize=(12, 9), layout="compressed")
@@ -158,6 +161,9 @@ ax[3].plot(orders, np.array(fit_par)[:, 1], color=colors[1], label="Decay Rate",
 std = np.array(fit_cov)[:, 1, 1]**0.5
 ax[3].fill_between(orders, np.array(fit_par)[:, 1] - std, np.array(fit_par)[:, 1] + std, 
                    color=colors[1], alpha=0.2, zorder=5)
+props = dict(facecolor='white', alpha=1, edgecolor="black", lw=0.5)
+ax[3].text(0.6, 0.5, "Makes no sense to fit a\ndecay envelope to the data", transform=ax[3].transAxes, fontsize=12,
+              verticalalignment="center", horizontalalignment="center", bbox=props)
 
 plt.savefig(f"./LinForecast/Images/forecast-{load_path.split('/')[-1]}.pdf", dpi=500)
 plt.show()
