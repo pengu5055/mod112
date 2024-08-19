@@ -67,9 +67,14 @@ for f, yw in filters.items():
 
     abs_diff.append(row)
 abs_diff = np.array(abs_diff)
+
+poly = {}
+for f, yw in filters.items():
+    print(f)
+    poly[f] = np.roots(np.r_[1, -yw.R])
         
 # Plot Abs. diff from FFT
-fig, ax = plt.subplots(1, 2, figsize=(12, 5), layout="compressed")
+fig, ax = plt.subplots(1, 3, figsize=(14, 4), layout="compressed")
 y_ticks = [int(f) for f in filters.keys()]
 
 cmap = cmr.get_sub_cmap('cmr.tropical', 0.0, 0.85)
@@ -107,10 +112,20 @@ ax[1].set_yticklabels(y_ticks)
 ax[1].set_xticks(np.arange(0, len(N_eval), 1) + 1/2)
 ax[1].set_xticklabels(N_eval)
 
+ax[2].set_title("Char. Polynomial Roots")
+ax[2].set_xlabel("Real")
+ax[2].set_ylabel("Imaginary")
+for i, a in enumerate(poly.items()):
+    f, p = a
+    ax[2].scatter(np.real(p), np.imag(p), label=f"Order {f}", color=colors[i], alpha=0.6)
+ax[2].legend(ncols=3, loc="upper left", fontsize=8)
+ax[2].plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), color="k", lw=3, ls="--", zorder=2)
+ax[2].set_xlim(-1.5, 1.5)
+ax[2].set_ylim(-1.5, 1.5)
 
 
 # Make frame between the cells of the heatmap
-for a in ax.flatten():
+for a in ax.flatten()[:-1]:
     N_box = np.arange(0, len(N_eval) + 1, 1)
     filter_box = np.arange(0, len(filters) + 1, 1)
     for i in range(len(N_box)):
