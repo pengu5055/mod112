@@ -42,7 +42,21 @@ ax = ax.flatten()
 x_input_axis = range(0, split)
 x_forecast_axis = range(split, len(data))
 
-ax[1].set_title("Signal Forecast")
+ax[0].set_visible(True)
+ax[0].plot([], [], color=colors[0], label="Input Data")
+ax[0].plot([], [], color=colors[1], label="Forecast")
+ax[0].scatter([], [], color=colors[7], label="Positive Peaks", s=10)
+ax[0].plot([], [], color="black", lw=1, ls="--", label="Exponential Fit", alpha=0.8)
+ax[0].legend(loc="center", fontsize=12)
+textstr = f"Forecasted Signal {load_path.split('/')[-1]}\n{order}th Order AR Model"
+ax[0].text(0.5, 0.8, textstr, transform=ax[0].transAxes, fontsize=18, fontweight="bold",
+            verticalalignment="center", horizontalalignment="center")
+ax[0].axis('off')
+ax[0].grid(False)
+ax[0].set_facecolor('none')
+
+
+
 ax[1].plot(data1, color=colors[0], label="Input Data")
 ax[1].plot(x_forecast_axis, predictions, color=colors[1], label="Forecast")
 pred_peaks = signal.find_peaks(predictions, height=0.02)[0]
@@ -53,6 +67,11 @@ popt, pcov = curve_fit(exp, pred_peaks, peak_values, p0=[1000, -1e-5])
 y_fit = exp(pred_peaks, *popt)
 ax[1].plot(pred_peaks, y_fit, color="black", lw=1, ls="--", label="Exponential Fit", alpha=0.8)
 ax[1].plot(pred_peaks, -y_fit, color="black", lw=1, ls="--", alpha=0.8)
+props = dict(facecolor='white', alpha=1, edgecolor="black", lw=0.5)
+textstr = f"Exponential Fit: $y = a \cdot e^{{b \cdot x}}$\n$a = {popt[0]:.2e} \pm {pcov[0, 0]**2:.2e}$" \
+          f"\n$b = {popt[1]:.2e} \pm {pcov[1, 1]**2:.2e}$"
+ax[1].text(0.97, 0.96, textstr, transform=ax[1].transAxes, fontsize=10, fontweight="bold",
+            verticalalignment="top", horizontalalignment="right", bbox=props)
 # ax[1].legend()
 
 plt.show()
